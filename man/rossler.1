@@ -1,0 +1,107 @@
+.TH ROSSLER 1
+.SH NAME
+.PD 0
+.TP
+rossler \- plot the phase space of the Rossler system
+.PD 1
+.SH SYNOPSIS
+.PD 0
+.TP
+.B rossler \fB-help
+.LP
+\ \ or
+.TP
+.B rossler
+\fB[\-width \fIinteger\fP]
+[\-height \fIinteger\fP]
+[\-skip \fIinteger\fP]
+[\-points \fIinteger\fP]
+[\-A \fIdouble\fP]
+[\-B \fIdouble\fP]
+[\-C \fIdouble\fP]
+[\-delta \fIinteger\fP]
+[\-dt \fIdouble\fP]
+[\-x0 \fIdouble\fP]
+[\-y0 \fIdouble\fP]
+[\-z0 \fIdouble\fP]
+[\-data]
+[\-xp \fIstring\fP]
+[\-yp \fIstring\fP]
+[\-factor \fIdouble\fP]
+[\-inv]
+[\-mag \fIinteger\fP]
+[\-term \fIstring\fP]
+.PD 1
+.SH DESCRIPTION
+The phase space of the Rossler system, which is described by the 
+three differential equations 
+
+dx/dt = -y - z, 
+
+dy/dt = A * y + x, and 
+
+dz/dt = B + x * z - C * z, 
+
+is plotted according to the specified parameters.  Valid arguments 
+passed with the -xp and -yp options can be any one of x(t), y(t), z(t), 
+x(t-delta), y(t-delta), or z(t-delta).  Thus, the displayed plot can 
+take the form of a state space plot or a delayed coordinate plot.
+.SH OPTIONS
+.IP \fB\-width\ \fIinteger\fP
+Width of the plot in pixels.
+.IP \fB\-height\ \fIinteger\fP
+Height of the plot in pixels.
+.IP \fB\-skip\ \fIinteger\fP
+Number of initial points to skip.
+.IP \fB\-points\ \fIinteger\fP
+Number of points to plot.
+.IP \fB\-A\ \fIdouble\fP
+Value of the A parameter.
+.IP \fB\-B\ \fIdouble\fP
+Value of the B parameter.
+.IP \fB\-C\ \fIdouble\fP
+Value of The C parameter.
+.IP \fB\-delta\ \fIinteger\fP
+Time delay term.
+.IP \fB\-dt\ \fIdouble\fP
+Time step.
+.IP \fB\-x0\ \fIdouble\fP
+Initial X value.
+.IP \fB\-y0\ \fIdouble\fP
+Initial Y value.
+.IP \fB\-z0\ \fIdouble\fP
+Initial Z value.
+.IP \fB\-data
+Don't plot, but print points.
+.IP \fB\-xp\ \fIstring\fP
+X-coordinate for plot.
+.IP \fB\-yp\ \fIstring\fP
+Y-coordinate for plot.
+.IP \fB\-factor\ \fIdouble\fP
+Auto-scale expansion factor.
+.IP \fB\-inv
+Invert all colors?
+.IP \fB\-mag\ \fIinteger\fP
+Magnification factor.
+.IP \fB\-term\ \fIstring\fP
+How to plot points.
+.SH MISCELLANY
+The plot region is determined by the points that are initially
+skipped.  If this number is too small (i.e., it is not very
+representative of the range of the plotted values), then you
+may need to increase the number specified by the -skip option.
+Alternatively, you can adjust the value given to -factor, which
+simply fractionally increases the border of the plot.
+
+The program uses a second-order Euler's method to perform the
+numerical integration, which is sufficient for simple tasks such
+as this.
+.SH BUGS
+No sanity checks are performed to make sure that any of the
+options make sense.
+.SH AUTHOR
+Copyright (c) 1997, Gary William Flake.
+
+Permission granted for any use according to the standard GNU
+``copyleft'' agreement provided that the author's comments are
+neither modified nor removed.  No warranty is given or implied.

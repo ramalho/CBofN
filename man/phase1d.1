@@ -1,0 +1,84 @@
+.TH PHASE1D 1
+.SH NAME
+.PD 0
+.TP
+phase1d \- plot phase\-space of a one\-dimensional map
+.PD 1
+.SH SYNOPSIS
+.PD 0
+.TP
+.B phase1d \fB-help
+.LP
+\ \ or
+.TP
+.B phase1d
+\fB[\-width \fIinteger\fP]
+[\-height \fIinteger\fP]
+[\-points \fIinteger\fP]
+[\-skip \fIinteger\fP]
+[\-r \fIdouble\fP]
+[\-aux \fIdouble\fP]
+[\-x0 \fIdouble\fP]
+[\-dx \fIdouble\fP]
+[\-func \fIstring\fP]
+[\-arrows]
+[\-inv]
+[\-mag \fIinteger\fP]
+[\-term \fIstring\fP]
+.PD 1
+.SH DESCRIPTION
+A phase-space diagram is plotted for a one-dimensional map 
+according to the specified options.  If the option for -dx is 
+non-zero, then two trajectories are plotted: one staring at x0, 
+and the other starting at (x0 + dx).  See the MAPS section of the 
+manual page for details of what maps are supported.  User defined 
+maps can be added to the file maps1d.c, but you must recompile 
+the program. 
+.SH OPTIONS
+.IP \fB\-width\ \fIinteger\fP
+Width of the plot in pixels.
+.IP \fB\-height\ \fIinteger\fP
+Height of the plot in pixels.
+.IP \fB\-points\ \fIinteger\fP
+Number of points to plot.
+.IP \fB\-skip\ \fIinteger\fP
+Number of points to skip.
+.IP \fB\-r\ \fIdouble\fP
+Value for r.
+.IP \fB\-aux\ \fIdouble\fP
+Auxiliary map parameter.
+.IP \fB\-x0\ \fIdouble\fP
+Initial value for x.
+.IP \fB\-dx\ \fIdouble\fP
+Difference for second trajectory.
+.IP \fB\-func\ \fIstring\fP
+Map function to use (one of 'log', 'tent', 'sin', or 'gauss').
+.IP \fB\-arrows
+Show arrows to indicate directions?
+.IP \fB\-inv
+Invert all colors?
+.IP \fB\-mag\ \fIinteger\fP
+Magnification factor.
+.IP \fB\-term\ \fIstring\fP
+How to plot points.
+.SH MAPS
+The following four one-dimensional maps are allowed:
+.IP Logistic\ Map:
+x(t+1) = 4 * r * x(t) * (1.0 - x(t))
+.IP Tent\ Map:
+x(t+1) = (x(t) <= 0.5) ? 2 * r * x(t) : 2r * (1.0 - x(t))
+.IP Sine\ Map:
+x(t+1) = sin(x(t) * PI * aux * 2 * r) / 2 + 0.5
+.IP Gaussian\ Map:
+x(t+1) = r * exp(-aux * (x(t) - 0.5) * (x(t) - 0.5))
+.LP
+See the file "maps1d.c" to see how to add user-defined maps.
+.SH BUGS
+No sanity checks are performed to make sure that any of the
+options make sense.
+.SH AUTHOR
+Copyright (c) 1997, Gary William Flake.
+
+Permission granted for any use according to the standard GNU
+``copyleft'' agreement provided that the author's comments are
+neither modified nor removed.  No warranty is given or implied.

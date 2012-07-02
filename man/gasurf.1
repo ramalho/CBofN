@@ -1,0 +1,58 @@
+.TH GASURF 1
+.SH NAME
+.PD 0
+.TP
+gasurf \- find a surfaces peak with a genetic algorithm
+.PD 1
+.SH SYNOPSIS
+.PD 0
+.TP
+.B gasurf \fB-help
+.LP
+\ \ or
+.TP
+.B gasurf
+\fB[\-size \fIinteger\fP]
+[\-len \fIinteger\fP]
+[\-gens \fIinteger\fP]
+[\-seed \fIinteger\fP]
+[\-crate \fIdouble\fP]
+[\-mrate \fIdouble\fP]
+.PD 1
+.SH DESCRIPTION
+Use a genetic algorithm to find the maximum of a multi-humped function. 
+This program serves as an example of how GAs can be used to optimize 
+function which take a multiple floating point arguments. Reproduction 
+of strings entails crossover and mutation with strings being selected 
+based on fitness.
+.SH OPTIONS
+.IP \fB\-size\ \fIinteger\fP
+Population size.
+.IP \fB\-len\ \fIinteger\fP
+DNA length.
+.IP \fB\-gens\ \fIinteger\fP
+Number of generations.
+.IP \fB\-seed\ \fIinteger\fP
+Random seed.
+.IP \fB\-crate\ \fIdouble\fP
+Crossover rate.
+.IP \fB\-mrate\ \fIdouble\fP
+Mutation rate.
+.SH MISCELLANY
+The bit strings are converted to floating point numbers
+with the formula (8 * int(string) / 2^len - 4) where
+int(string) is the integer value of a binary string.  Thus,
+all numbers are forced to be between -4 and 4.
+
+A more sophisticated GA encoding would use Gray codes to
+represent the floating point numbers which arguably are
+better behaved under mutation.
+.SH BUGS
+No sanity checks are performed to make sure that any of the
+options make sense.
+.SH AUTHOR
+Copyright (c) 1997, Gary William Flake.
+
+Permission granted for any use according to the standard GNU
+``copyleft'' agreement provided that the author's comments are
+neither modified nor removed.  No warranty is given or implied.

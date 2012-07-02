@@ -1,0 +1,95 @@
+<HTML>
+<BODY>
+<PRE>
+<!-- Manpage converted by man2html 3.0.1 -->
+
+
+</PRE>
+<H4>NAME</H4><PRE>
+       life - play Conway's Game of Life
+
+
+</PRE>
+<H4>SYNOPSIS</H4><PRE>
+       <B>life</B> <B>-help</B>
+         or
+       <B>life</B>   <B>[-width</B> <I>integer</I><B>]</B> <B>[-height</B> <I>integer</I><B>]</B> <B>[-extra</B> <I>integer</I><B>]</B>
+              <B>[-wrap]</B> <B>[-infile</B> <I>string</I><B>]</B>  <B>[-steps</B>  <I>integer</I><B>]</B>  <B>[-inv]</B>
+              <B>[-mag</B> <I>integer</I><B>]</B> <B>[-term</B> <I>string</I><B>]</B>
+
+
+</PRE>
+<H4>DESCRIPTION</H4><PRE>
+       Simulate  Conway's  Game  of Life with an arbitrary set of
+       initial conditions.  Input files need to  be  in  the  PBM
+       file format.
+
+
+</PRE>
+<H4>OPTIONS</H4><PRE>
+       <B>-width</B> <I>integer</I>
+              Width of the plot in pixels.
+
+       <B>-height</B> <I>integer</I>
+              Height of the plot in pixels.
+
+       <B>-extra</B> <I>integer</I>
+              Number of extra border pixels.
+
+       <B>-wrap</B>  Wrap around world?
+
+       <B>-infile</B> <I>string</I>
+              Initial configuration file
+
+       <B>-steps</B> <I>integer</I>
+              Number of time steps to simulate.
+
+       <B>-inv</B>   Invert all colors?
+
+       <B>-mag</B> <I>integer</I>
+              Magnification factor.
+
+       <B>-term</B> <I>string</I>
+              How to plot points.
+
+
+</PRE>
+<H4>MISCELLANY</H4><PRE>
+       You  will need to use the -extra option in conjuction with
+       the -wrap option if you wish to  simulate  moving  objects
+       that  tend to fly off in one direction.  Periodic patterns
+       may need the -extra option to give them a  little  bit  of
+       extra room to work in.
+
+
+</PRE>
+<H4>BUGS</H4><PRE>
+       No  sanity  checks  are performed to make sure that any of
+       the options make sense.
+
+
+</PRE>
+<H4>CREDITS</H4><PRE>
+       The data files for the initial states supplied  with  this
+
+       program  were  lifted and converted from the excellent and
+       free program xlife.
+
+
+</PRE>
+<H4>AUTHOR</H4><PRE>
+       Copyright (c) 1997, Gary William Flake.
+
+       Permission granted for any use according to  the  standard
+       GNU ``copyleft'' agreement provided that the author's com-
+       ments are neither modified nor removed.   No  warranty  is
+       given or implied.
+
+</PRE>
+<HR>
+<ADDRESS>
+Man(1) output converted with
+<a href="http://www.oac.uci.edu/indiv/ehood/man2html.html">man2html</a>
+</ADDRESS>
+</BODY>
+</HTML>

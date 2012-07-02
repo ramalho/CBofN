@@ -1,0 +1,76 @@
+.TH GATASK 1
+.SH NAME
+.PD 0
+.TP
+gatask \- solve a task assignment problem via a genetic algorithm
+.PD 1
+.SH SYNOPSIS
+.PD 0
+.TP
+.B gatask \fB-help
+.LP
+\ \ or
+.TP
+.B gatask
+\fB[\-specs \fIstring\fP]
+[\-size \fIinteger\fP]
+[\-gens \fIinteger\fP]
+[\-seed \fIinteger\fP]
+[\-crate \fIdouble\fP]
+[\-mrate \fIdouble\fP]
+[\-pbase \fIdouble\fP]
+.PD 1
+.SH DESCRIPTION
+Use a genetic algorithm to solve a task assignment problem with 
+user-specified costs.  This program illustrates how GAs can perform 
+combinatorial optimization.  Reproduction of strings entails 
+special crossover and mutation operations which preserve 
+constraints on the form of feasible solutions with strings being 
+selected based on fitness.
+.SH OPTIONS
+.IP \fB\-specs\ \fIstring\fP
+Problem specification file.
+.IP \fB\-size\ \fIinteger\fP
+Population size.
+.IP \fB\-gens\ \fIinteger\fP
+Number of generations.
+.IP \fB\-seed\ \fIinteger\fP
+Random seed.
+.IP \fB\-crate\ \fIdouble\fP
+Crossover rate.
+.IP \fB\-mrate\ \fIdouble\fP
+Mutation rate.
+.IP \fB\-pbase\ \fIdouble\fP
+Exponentiation base.
+.SH MISCELLANY
+Feasible solutions are represented as an array of LEN integers
+which must contain all integers between 0 and LEN - 1 to denote
+which person performs which task.  As such, the mutation and
+crossover operators have to be subtly redefined so that candidate
+solutions are still feasible after they are crossed and mutated.
+
+For mutation, we simply swap two locations in a solution array.
+
+Crossing two solutions is a little more complicated.  Consult
+the source code to see how it's done in a manner that preserves
+the feasibility of the two children while blending portions of
+each parent solution.
+
+The fitness function works in three steps.  First, the score of a
+solution is calculated and denoted the raw fitness.  The scaled
+fitness is then set to pow(PBASE, raw fitness - worst raw fitness).
+The normalized fitness is then set to the scaled fitness divided by
+the sum of the scaled fitnesses.  Thus the sum of the normalized
+fitnesses must be equal to one while a string with a raw score
+of one better than another string is PBASE times as likely to
+reproduce, where PBASE is the value supplied with the -pbase
+option.
+.SH BUGS
+No sanity checks are performed to make sure that any of the
+options make sense.
+.SH AUTHOR
+Copyright (c) 1997, Gary William Flake.
+
+Permission granted for any use according to the standard GNU
+``copyleft'' agreement provided that the author's comments are
+neither modified nor removed.  No warranty is given or implied.

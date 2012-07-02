@@ -1,0 +1,86 @@
+<HTML>
+<BODY>
+<PRE>
+<!-- Manpage converted by man2html 3.0.1 -->
+
+
+</PRE>
+<H4>NAME</H4><PRE>
+       gasurf - find a surfaces peak with a genetic algorithm
+
+
+</PRE>
+<H4>SYNOPSIS</H4><PRE>
+       <B>gasurf</B> <B>-help</B>
+         or
+       <B>gasurf</B> <B>[-size</B>  <I>integer</I><B>]</B>  <B>[-len</B>  <I>integer</I><B>]</B>  <B>[-gens</B>  <I>integer</I><B>]</B>
+              <B>[-seed</B> <I>integer</I><B>]</B> <B>[-crate</B> <I>double</I><B>]</B> <B>[-mrate</B> <I>double</I><B>]</B>
+
+
+</PRE>
+<H4>DESCRIPTION</H4><PRE>
+       Use a genetic algorithm to find the maximum  of  a  multi-
+       humped function.  This program serves as an example of how
+       GAs can be used to optimize function which take a multiple
+       floating  point arguments. Reproduction of strings entails
+       crossover and mutation with strings being  selected  based
+       on fitness.
+
+
+</PRE>
+<H4>OPTIONS</H4><PRE>
+       <B>-size</B> <I>integer</I>
+              Population size.
+
+       <B>-len</B> <I>integer</I>
+              DNA length.
+
+       <B>-gens</B> <I>integer</I>
+              Number of generations.
+
+       <B>-seed</B> <I>integer</I>
+              Random seed.
+
+       <B>-crate</B> <I>double</I>
+              Crossover rate.
+
+       <B>-mrate</B> <I>double</I>
+              Mutation rate.
+
+
+</PRE>
+<H4>MISCELLANY</H4><PRE>
+       The  bit  strings  are converted to floating point numbers
+       with the formula (8 *  int(string)  /  2^len  -  4)  where
+       int(string)  is  the  integer  value  of  a binary string.
+       Thus, all numbers are forced to be between -4 and 4.
+
+       A more sophisticated GA encoding would use Gray  codes  to
+       represent  the  floating  point numbers which arguably are
+       better behaved under mutation.
+
+
+</PRE>
+<H4>BUGS</H4><PRE>
+       No sanity checks are performed to make sure  that  any  of
+       the options make sense.
+
+
+</PRE>
+<H4>AUTHOR</H4><PRE>
+       Copyright (c) 1997, Gary William Flake.
+
+       Permission  granted  for any use according to the standard
+
+       GNU ``copyleft'' agreement provided that the author's com-
+       ments  are  neither  modified nor removed.  No warranty is
+       given or implied.
+
+</PRE>
+<HR>
+<ADDRESS>
+Man(1) output converted with
+<a href="http://www.oac.uci.edu/indiv/ehood/man2html.html">man2html</a>
+</ADDRESS>
+</BODY>
+</HTML>

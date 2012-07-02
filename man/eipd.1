@@ -1,0 +1,105 @@
+.TH EIPD 1
+.SH NAME
+.PD 0
+.TP
+eipd \- simulate the ecological iterated Prisoner's Dilemma
+.PD 1
+.SH SYNOPSIS
+.PD 0
+.TP
+.B eipd \fB-help
+.LP
+\ \ or
+.TP
+.B eipd
+\fB[\-steps \fIinteger\fP]
+[\-rounds \fIinteger\fP]
+[\-seed \fIinteger\fP]
+[\-CC \fIdouble\fP]
+[\-CD \fIdouble\fP]
+[\-DC \fIdouble\fP]
+[\-DD \fIdouble\fP]
+[\-Iallc \fIdouble\fP]
+[\-Itft \fIdouble\fP]
+[\-Irand \fIdouble\fP]
+[\-Ipav \fIdouble\fP]
+[\-Ialld \fIdouble\fP]
+[\-rcp \fIdouble\fP]
+[\-noise \fIdouble\fP]
+.PD 1
+.SH DESCRIPTION
+The ecological iterated Prisoner's Dilemma is simulated  over time 
+according to the specified parameters.  At every time step the population 
+of each strategy is calculated as a function of the expected scores 
+earned against all strategies weighted by the populations of the 
+opponents.  Possible strategies include 'Always Cooperate,' 'Always Defect,' 
+'Random,' 'Pavlov,' and 'Tit-for-Tat.'
+.SH OPTIONS
+.IP \fB\-steps\ \fIinteger\fP
+Number of steps to simulate.
+.IP \fB\-rounds\ \fIinteger\fP
+Number of rounds per step.
+.IP \fB\-seed\ \fIinteger\fP
+Random seed for initial state.
+.IP \fB\-CC\ \fIdouble\fP
+Reward Payoff.
+.IP \fB\-CD\ \fIdouble\fP
+Sucker Payoff.
+.IP \fB\-DC\ \fIdouble\fP
+Temptation Payoff.
+.IP \fB\-DD\ \fIdouble\fP
+Punish Payoff.
+.IP \fB\-Iallc\ \fIdouble\fP
+Initial population of All-C.
+.IP \fB\-Itft\ \fIdouble\fP
+Initial population of TFT.
+.IP \fB\-Irand\ \fIdouble\fP
+Initial population of Random.
+.IP \fB\-Ipav\ \fIdouble\fP
+Initial population of Pavlov.
+.IP \fB\-Ialld\ \fIdouble\fP
+Initial population of All-D.
+.IP \fB\-rcp\ \fIdouble\fP
+Probability of C for Random strategy.
+.IP \fB\-noise\ \fIdouble\fP
+Probability of noise.
+.SH PAYOFFS
+The payoff matrix for the Prisoner's Dilemma game is usually
+expressed as:
+                          Player B's Move
+                     +-----------+-----------+
+     Player A's Move | cooperate |  defect   |
+         +-----------+-----------+-----------+
+         | cooperate |  CC, CC   |  CD, DC   |
+         +-----------+-----------+-----------+
+         |    defect |  DC, CD   |  DD, DD   |
+         +-----------+-----------+-----------+
+
+where the table entries are (A's payoff, B's payoff) and
+CC, CD, DC, and DD are the reward, sucker, temptation,
+and punish payoffs, respectively.  For each of these four
+outcomes you will probably want the payoffs to reflect the
+relationships:  
+
+     (DC > CC > DD > CD) and ((CD + DC) / 2 < CC).
+.SH MISCELLANY
+random noise (via the -noise option) manifests itself as a
+cell making a randomly selected move in a single round.  In
+this case, both the cell whose action was altered as well as
+that cell's opponents "remember" what the random move was on
+the next round.
+
+During each time step, every strategy plays against every 
+other strategy as well as against itself.
+
+The initial population levels for all strategies will be
+normalized, so the scaling of the option values is irrelevant.
+.SH BUGS
+No sanity checks are performed to make sure that any of the
+options make sense.
+.SH AUTHOR
+Copyright (c) 1997, Gary William Flake.
+
+Permission granted for any use according to the standard GNU
+``copyleft'' agreement provided that the author's comments are
+neither modified nor removed.  No warranty is given or implied.

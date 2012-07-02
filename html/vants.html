@@ -1,0 +1,98 @@
+<HTML>
+<BODY>
+<PRE>
+<!-- Manpage converted by man2html 3.0.1 -->
+
+
+</PRE>
+<H4>NAME</H4><PRE>
+       vants - simulate a population of generalized virtual ants
+
+
+</PRE>
+<H4>SYNOPSIS</H4><PRE>
+       <B>vants</B> <B>-help</B>
+         or
+       <B>vants</B>  <B>[-width</B>  <I>integer</I><B>]</B>  <B>[-height</B> <I>integer</I><B>]</B> <B>[-num</B> <I>integer</I><B>]</B>
+              <B>[-rule</B> <I>string</I><B>]</B>  <B>[-dense</B>  <I>double</I><B>]</B>  <B>[-steps</B>  <I>integer</I><B>]</B>
+              <B>[-seed</B>   <I>integer</I><B>]</B>   <B>[-inv]</B>  <B>[-mag</B>  <I>integer</I><B>]</B>  <B>[-term</B>
+              <I>string</I><B>]</B>
+
+
+</PRE>
+<H4>DESCRIPTION</H4><PRE>
+       Simulate and plot a population of  virtual  ants  (vants).
+       The  behavior  of  the vants is determined by a bit string
+       with length equal to the number of states that  each  cell
+       in  the  vants' grid world can take.  If a vant walks on a
+       cell in state S, then the vant turns right if the S'th bit
+       of  the rule string is 1 and left if it's 0.  As it leaves
+       the cell the vant changes the state of the old cell to  (S
+       + 1) % NUMSTATES.
+
+
+</PRE>
+<H4>OPTIONS</H4><PRE>
+       <B>-width</B> <I>integer</I>
+              Width of the plot in pixels.
+
+       <B>-height</B> <I>integer</I>
+              Height of the plot in pixels.
+
+       <B>-num</B> <I>integer</I>
+              Number of ants.
+
+       <B>-rule</B> <I>string</I>
+              Rule string.
+
+       <B>-dense</B> <I>double</I>
+              Density of random crud.
+
+       <B>-steps</B> <I>integer</I>
+              Number of simulated steps.
+
+       <B>-seed</B> <I>integer</I>
+              Random seed for initial state.
+
+       <B>-inv</B>   Invert all colors?
+
+       <B>-mag</B> <I>integer</I>
+              Magnification factor.
+
+       <B>-term</B> <I>string</I>
+              How to plot points.
+
+
+</PRE>
+<H4>MISCELLANY</H4><PRE>
+       It  is definitely worthwhile to simulate multiple vants as
+       the possible composite behavior of multiple vants  is  far
+
+       different than a single vant.  In fact, multiple vants can
+       invert the work of other vants, which  yields  interesting
+       deconstructive behavior.
+
+
+</PRE>
+<H4>BUGS</H4><PRE>
+       No  sanity  checks  are performed to make sure that any of
+       the options make sense.
+
+
+</PRE>
+<H4>AUTHOR</H4><PRE>
+       Copyright (c) 1997, Gary William Flake.
+
+       Permission granted for any use according to  the  standard
+       GNU ``copyleft'' agreement provided that the author's com-
+       ments are neither modified nor removed.   No  warranty  is
+       given or implied.
+
+</PRE>
+<HR>
+<ADDRESS>
+Man(1) output converted with
+<a href="http://www.oac.uci.edu/indiv/ehood/man2html.html">man2html</a>
+</ADDRESS>
+</BODY>
+</HTML>

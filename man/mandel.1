@@ -1,0 +1,99 @@
+.TH MANDEL 1
+.SH NAME
+.PD 0
+.TP
+mandel \- make a plot the Mandelbrot set
+.PD 1
+.SH SYNOPSIS
+.PD 0
+.TP
+.B mandel \fB-help
+.LP
+\ \ or
+.TP
+.B mandel
+\fB[\-width \fIinteger\fP]
+[\-height \fIinteger\fP]
+[\-maxit \fIinteger\fP]
+[\-levels \fIinteger\fP]
+[\-bail \fIdouble\fP]
+[\-ulx \fIdouble\fP]
+[\-uly \fIdouble\fP]
+[\-lly \fIdouble\fP]
+[\-box \fIinteger\fP]
+[\-bulx \fIdouble\fP]
+[\-buly \fIdouble\fP]
+[\-blly \fIdouble\fP]
+[\-idiv \fIinteger\fP]
+[\-rev]
+[\-inv]
+[\-mag \fIinteger\fP]
+[\-term \fIstring\fP]
+.PD 1
+.SH DESCRIPTION
+The Mandelbrot set is drawn according to the specified parameters.  The  
+image is computed by iterating the complex equation z(t) = (z(t-1))^2  
++ c, where c is the complex point (x + yi) that corresponds to an (x, 
+y) screen coordinate and the initial value of z(0) = 0.  If the system 
+diverges at time k (i.e., |z(k)| > BAIL) then a point at (x, y) is 
+plotted with the grayscale color (k / IDIV + (k % IDIV) * (LEVELS / 
+IDIV)) % LEVELS), which reduces to (k % LEVELS) with an IDIV of 1. 
+.SH OPTIONS
+.IP \fB\-width\ \fIinteger\fP
+Width of the plot in pixels.
+.IP \fB\-height\ \fIinteger\fP
+Height of the plot in pixels.
+.IP \fB\-maxit\ \fIinteger\fP
+Maximum number of iterations before automatic bail-out.
+.IP \fB\-levels\ \fIinteger\fP
+Number of plot (gray) levels to use.
+.IP \fB\-bail\ \fIdouble\fP
+Value of |z| to end iteration, i.e., the bailout value.
+.IP \fB\-ulx\ \fIdouble\fP
+Upper-left corner x-coordinate.
+.IP \fB\-uly\ \fIdouble\fP
+Upper-left corner y-coordinate.
+.IP \fB\-lly\ \fIdouble\fP
+Lower-left corner y-coordinate.
+.IP \fB\-box\ \fIinteger\fP
+Line width for a box.  If zero, no box is drawn.
+.IP \fB\-bulx\ \fIdouble\fP
+Box's upper-left x-coordinate.
+.IP \fB\-buly\ \fIdouble\fP
+Box's upper-left y-coordinate.
+.IP \fB\-blly\ \fIdouble\fP
+Box's lower-left y-coordinate.
+.IP \fB\-idiv\ \fIinteger\fP
+Iteration divisor.   When greater than one, this creates a banding effect.
+.IP \fB\-rev
+Reverse all colors but first?
+.IP \fB\-inv
+Invert all colors?
+.IP \fB\-mag\ \fIinteger\fP
+Magnification factor.
+.IP \fB\-term\ \fIstring\fP
+How to plot points.
+.SH COLORS
+The four permutations of using or not using -rev and -inv will
+yield four different coloring schemes.  Try it and see.
+.SH MISCELLANY
+The method for choosing the viewable region may seem
+counter-intuitive at first, but it has some nice properties.  In
+particular, selecting the exact (x, y) coordinates for the
+upper-left corner and only selecting the lower right y coordinate
+forces both the x and y scales to be identical since all scales
+are uniquely determined by these values along with the plot
+width and height.  If you then change the width or height of the
+plot, the relative scales will still match up.  The options for
+making a box work similarly.
+.SH BUGS
+No sanity checks are performed to make sure that any of the
+options make sense.  In particular, the bounding corners can be
+screwed up, and division by zero can occur with a malicious
+setting of IDIV.
+.SH AUTHOR
+Copyright (c) 1997, Gary William Flake.
+
+Permission granted for any use according to the standard GNU
+``copyleft'' agreement provided that the author's comments are
+neither modified nor removed.  No warranty is given or implied.

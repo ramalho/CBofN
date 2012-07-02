@@ -1,0 +1,69 @@
+.TH VANTS 1
+.SH NAME
+.PD 0
+.TP
+vants \- simulate a population of generalized virtual ants
+.PD 1
+.SH SYNOPSIS
+.PD 0
+.TP
+.B vants \fB-help
+.LP
+\ \ or
+.TP
+.B vants
+\fB[\-width \fIinteger\fP]
+[\-height \fIinteger\fP]
+[\-num \fIinteger\fP]
+[\-rule \fIstring\fP]
+[\-dense \fIdouble\fP]
+[\-steps \fIinteger\fP]
+[\-seed \fIinteger\fP]
+[\-inv]
+[\-mag \fIinteger\fP]
+[\-term \fIstring\fP]
+.PD 1
+.SH DESCRIPTION
+Simulate and plot a population of virtual ants (vants).  The behavior 
+of the vants is determined by a bit string with length equal to the 
+number of states that each cell in the vants' grid world can take.  If 
+a vant walks on a cell in state S, then the vant turns right if the 
+S'th bit of the rule string is 1 and left if it's 0.  As it leaves the 
+cell the vant changes the state of the old cell to 
+(S + 1) % NUMSTATES.
+.SH OPTIONS
+.IP \fB\-width\ \fIinteger\fP
+Width of the plot in pixels.
+.IP \fB\-height\ \fIinteger\fP
+Height of the plot in pixels.
+.IP \fB\-num\ \fIinteger\fP
+Number of ants.
+.IP \fB\-rule\ \fIstring\fP
+Rule string.
+.IP \fB\-dense\ \fIdouble\fP
+Density of random crud.
+.IP \fB\-steps\ \fIinteger\fP
+Number of simulated steps.
+.IP \fB\-seed\ \fIinteger\fP
+Random seed for initial state.
+.IP \fB\-inv
+Invert all colors?
+.IP \fB\-mag\ \fIinteger\fP
+Magnification factor.
+.IP \fB\-term\ \fIstring\fP
+How to plot points.
+.SH MISCELLANY
+It is definitely worthwhile to simulate multiple vants as
+the possible composite behavior of multiple vants is far 
+different than a single vant.  In fact, multiple vants can
+invert the work of other vants, which yields interesting
+deconstructive behavior.
+.SH BUGS
+No sanity checks are performed to make sure that any of the
+options make sense.
+.SH AUTHOR
+Copyright (c) 1997, Gary William Flake.
+
+Permission granted for any use according to the standard GNU
+``copyleft'' agreement provided that the author's comments are
+neither modified nor removed.  No warranty is given or implied.

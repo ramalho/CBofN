@@ -1,0 +1,169 @@
+<HTML>
+<BODY>
+<PRE>
+<!-- Manpage converted by man2html 3.0.1 -->
+
+
+</PRE>
+<H4>NAME</H4><PRE>
+       sipd - simulate the spatial iterated Prisoner's Dilemma
+
+
+</PRE>
+<H4>SYNOPSIS</H4><PRE>
+       <B>sipd</B> <B>-help</B>
+         or
+       <B>sipd</B>   <B>[-width</B> <I>integer</I><B>]</B> <B>[-height</B> <I>integer</I><B>]</B> <B>[-steps</B> <I>integer</I><B>]</B>
+              <B>[-rounds</B> <I>integer</I><B>]</B> <B>[-seed</B> <I>integer</I><B>]</B> <B>[-CC</B> <I>double</I><B>]</B> <B>[-CD</B>
+              <I>double</I><B>]</B>  <B>[-DC</B>  <I>double</I><B>]</B> <B>[-DD</B> <I>double</I><B>]</B> <B>[-Iallc</B> <I>double</I><B>]</B>
+              <B>[-Itft</B>  <I>double</I><B>]</B>  <B>[-Irand</B>  <I>double</I><B>]</B>  <B>[-Ipav</B>   <I>double</I><B>]</B>
+              <B>[-Ialld</B>   <I>double</I><B>]</B>  <B>[-rcp</B>  <I>double</I><B>]</B>  <B>[-noise</B>  <I>double</I><B>]</B>
+              <B>[-mute</B>  <I>double</I><B>]</B>  <B>[-stats]</B>  <B>[-inv]</B>  <B>[-mag</B>   <I>integer</I><B>]</B>
+              <B>[-term</B> <I>string</I><B>]</B>
+
+
+</PRE>
+<H4>DESCRIPTION</H4><PRE>
+       The  spatial  iterated Prisoner's Dilemma is simulated and
+       plotted over time according to the  specified  parameters.
+       Each  cell in a grid plays a specific strategy against its
+       eight neighbors for several rounds.  At  the  end  of  the
+       last round, each cell copies the strategy of its most suc-
+       cesful neighbor, which is then  used  for  the  next  time
+       step.   Possible  strategies  include  'Always Cooperate,'
+       'Always Defect,'
+
+
+</PRE>
+<H4>OPTIONS</H4><PRE>
+       <B>-width</B> <I>integer</I>
+              Width of world.
+
+       <B>-height</B> <I>integer</I>
+              Height of world.
+
+       <B>-steps</B> <I>integer</I>
+              Number of steps to simulate.
+
+       <B>-rounds</B> <I>integer</I>
+              Number of rounds per step.
+
+       <B>-seed</B> <I>integer</I>
+              Random seed for initial state.
+
+       <B>-CC</B> <I>double</I>
+              Reward Payoff.
+
+       <B>-CD</B> <I>double</I>
+              Sucker Payoff.
+
+       <B>-DC</B> <I>double</I>
+              Temptation Payoff.
+
+       <B>-DD</B> <I>double</I>
+              Punish Payoff.
+
+       <B>-Iallc</B> <I>double</I>
+              Initial population of All-C.
+
+       <B>-Itft</B> <I>double</I>
+              Initial population of TFT.
+
+       <B>-Irand</B> <I>double</I>
+              Initial population of Random.
+
+       <B>-Ipav</B> <I>double</I>
+              Initial population of Pavlov.
+
+       <B>-Ialld</B> <I>double</I>
+              Initial population of All-D.
+
+       <B>-rcp</B> <I>double</I>
+              Probability of C for Random strategy.
+
+       <B>-noise</B> <I>double</I>
+              Probability of noise.
+
+       <B>-mute</B> <I>double</I>
+              Probability of mutation.
+
+       <B>-stats</B> Print statistics?
+
+       <B>-inv</B>   Invert all colors?
+
+       <B>-mag</B> <I>integer</I>
+              Magnification factor.
+
+       <B>-term</B> <I>string</I>
+              How to plot points.
+
+
+</PRE>
+<H4>PAYOFFS</H4><PRE>
+       The payoff matrix for the Prisoner's Dilemma game is  usu-
+       ally expressed as:
+                                 Player B's Move
+                            +-----------+-----------+
+            Player A's Move | cooperate |  defect   |
+                +-----------+-----------+-----------+
+                | cooperate |  CC, CC   |  CD, DC   |
+                +-----------+-----------+-----------+
+                |    defect |  DC, CD   |  DD, DD   |
+                +-----------+-----------+-----------+
+
+       where  the  table entries are (A's payoff, B's payoff) and
+       CC, CD, DC, and DD are the reward, sucker, temptation, and
+       punish payoffs, respectively.  For each of these four out-
+       comes you will probably want the payoffs  to  reflect  the
+       relationships:
+
+            (DC &gt; CC &gt; DD &gt; CD) and ((CD + DC) / 2 &lt; CC).
+
+
+</PRE>
+<H4>MISCELLANY</H4><PRE>
+       The  option for the probability of mutation (-mute) corre-
+       sponds to the act of a cell spontaneously  changing  to  a
+
+       randomly  selected  strategy independent of the outcome of
+       the most recent set of rounds.
+
+       random noise (via the -noise option) manifests itself as a
+       cell  making  a  randomly selected move in a single round.
+       In this case, both the cell whose action  was  altered  as
+       well  as  that cell's opponents "remember" what the random
+       move was on the next round.
+
+       The value supplied with the -term option may be "none," in
+       which case no graphic output is performed.  This is useful
+       if you simply want the statistics  to  be  calculated  for
+       each time step (via the -stats option).
+
+       The  initial  population levels for all strategies will be
+       normalized, so the scaling of the option values is irrele-
+       vant.
+
+
+</PRE>
+<H4>BUGS</H4><PRE>
+       No  sanity  checks  are performed to make sure that any of
+       the options make sense.
+
+
+</PRE>
+<H4>AUTHOR</H4><PRE>
+       Copyright (c) 1997, Gary William Flake.
+
+       Permission granted for any use according to  the  standard
+       GNU ``copyleft'' agreement provided that the author's com-
+       ments are neither modified nor removed.   No  warranty  is
+       given or implied.
+
+</PRE>
+<HR>
+<ADDRESS>
+Man(1) output converted with
+<a href="http://www.oac.uci.edu/indiv/ehood/man2html.html">man2html</a>
+</ADDRESS>
+</BODY>
+</HTML>

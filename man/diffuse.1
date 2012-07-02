@@ -1,0 +1,65 @@
+.TH DIFFUSE 1
+.SH NAME
+.PD 0
+.TP
+diffuse \- simulate diffusion limited aggregation
+.PD 1
+.SH SYNOPSIS
+.PD 0
+.TP
+.B diffuse \fB-help
+.LP
+\ \ or
+.TP
+.B diffuse
+\fB[\-width \fIinteger\fP]
+[\-height \fIinteger\fP]
+[\-levels \fIinteger\fP]
+[\-num \fIinteger\fP]
+[\-steps \fIinteger\fP]
+[\-invis]
+[\-seed \fIinteger\fP]
+[\-inv]
+[\-mag \fIinteger\fP]
+[\-term \fIstring\fP]
+.PD 1
+.SH DESCRIPTION
+A special type of stochastic fractal is created by the random action of 
+many particles.   The fractal starts out as a single point seed that is 
+fixed in position.  Particles float about via a random walk.  Whenever 
+a floating particle moves adjacent to fixed particle the floating 
+particles become frozen in place.  In this way, the fractal gradually 
+grows in size. 
+.SH OPTIONS
+.IP \fB\-width\ \fIinteger\fP
+Width of the plot in pixels.
+.IP \fB\-height\ \fIinteger\fP
+Height of the plot in pixels.
+.IP \fB\-levels\ \fIinteger\fP
+Number of plot (gray) levels to use.
+.IP \fB\-num\ \fIinteger\fP
+Number of floating particles.
+.IP \fB\-steps\ \fIinteger\fP
+Number of simulated steps.
+.IP \fB\-invis
+Invisible particles?
+.IP \fB\-seed\ \fIinteger\fP
+Random seed for initial state.
+.IP \fB\-inv
+Invert colors?
+.IP \fB\-mag\ \fIinteger\fP
+Magnification factor.
+.IP \fB\-term\ \fIstring\fP
+How to plot points.
+.SH MISCELLANY
+Using invisible particle will make the simulation run much
+faster under interactive graphic terminals, especially X Windows.
+.SH BUGS
+No sanity checks are performed to make sure that any of the
+options make sense.
+.SH AUTHOR
+Copyright (c) 1997, Gary William Flake.
+
+Permission granted for any use according to the standard GNU
+``copyleft'' agreement provided that the author's comments are
+neither modified nor removed.  No warranty is given or implied.

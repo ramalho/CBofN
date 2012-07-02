@@ -1,0 +1,136 @@
+<HTML>
+<BODY>
+<PRE>
+<!-- Manpage converted by man2html 3.0.1 -->
+
+
+</PRE>
+<H4>NAME</H4><PRE>
+       gsw - simulate a three species individual-based ecosystem
+
+
+</PRE>
+<H4>SYNOPSIS</H4><PRE>
+       <B>gsw</B> <B>-help</B>
+         or
+       <B>gsw</B>    <B>[-width</B> <I>integer</I><B>]</B> <B>[-height</B> <I>integer</I><B>]</B> <B>[-steps</B> <I>integer</I><B>]</B>
+              <B>[-seed</B> <I>integer</I><B>]</B> <B>[-plants</B> <I>integer</I><B>]</B> <B>[-herbs</B>  <I>integer</I><B>]</B>
+              <B>[-carns</B>  <I>integer</I><B>]</B>  <B>[-pmin</B>  <I>integer</I><B>]</B> <B>[-pmax</B> <I>integer</I><B>]</B>
+              <B>[-Ep</B> <I>integer</I><B>]</B>  <B>[-Eh</B>  <I>integer</I><B>]</B>  <B>[-Ec</B>  <I>integer</I><B>]</B>  <B>[-Ch</B>
+              <I>integer</I><B>]</B>  <B>[-Cc</B>  <I>integer</I><B>]</B> <B>[-Pt</B> <I>integer</I><B>]</B> <B>[-samp</B> <I>inte-</I>
+              <I>ger</I><B>]</B>  <B>[-stats]</B>  <B>[-pfreq</B>  <I>integer</I><B>]</B>  <B>[-noext]</B>  <B>[-inv]</B>
+              <B>[-mag</B> <I>integer</I><B>]</B> <B>[-term</B> <I>string</I><B>]</B>
+
+
+</PRE>
+<H4>DESCRIPTION</H4><PRE>
+       The  time  evolution  of an individual-based three species
+       predator-prey ecosystem  is  simulated  according  to  the
+       specified   parameters.   The  three  species  consist  of
+       plants, herbivores,  and  carnivores  (grass,  sheep,  and
+       wolves;  hence  the  name  GSW).   Updates  are  done syn-
+       chronously, and each species has several parameters  which
+       can  control  the  life  cycle,  from  the ability to give
+       birth,  to  the  likelihood  of  starvation.    Population
+       statistics  of  the three species can be calculated over a
+       subset of the entire grid.
+
+
+</PRE>
+<H4>OPTIONS</H4><PRE>
+       <B>-width</B> <I>integer</I>
+              Width of the plot in pixels.
+
+       <B>-height</B> <I>integer</I>
+              Height of the plot in pixels.
+
+       <B>-steps</B> <I>integer</I>
+              Number of simulated steps.
+
+       <B>-seed</B> <I>integer</I>
+              Random seed for initial state.
+
+       <B>-plants</B> <I>integer</I>
+              Initial number of plants.
+
+       <B>-herbs</B> <I>integer</I>
+              Initial number of herbivores.
+
+       <B>-carns</B> <I>integer</I>
+              Initial number of carnivores.
+
+       <B>-pmin</B> <I>integer</I>
+              Minimum plants in vicinity to make new plant.
+
+       <B>-pmax</B> <I>integer</I>
+              Maximum allowed plants  in  vicinity  to  make  new
+              plant.
+
+       <B>-Ep</B> <I>integer</I>
+              Energy of plant.
+
+       <B>-Eh</B> <I>integer</I>
+              Energy of herbivore.
+
+       <B>-Ec</B> <I>integer</I>
+              Energy of carnivore.
+
+       <B>-Ch</B> <I>integer</I>
+              Step energy cost for herbivores.
+
+       <B>-Cc</B> <I>integer</I>
+              Step energy cost for carnivores.
+
+       <B>-Pt</B> <I>integer</I>
+              Number of steps to grow plant.
+
+       <B>-samp</B> <I>integer</I>
+              Size of subsample statistaics.
+
+       <B>-stats</B> Show statistics?
+
+       <B>-pfreq</B> <I>integer</I>
+              Plot frequency.
+
+       <B>-noext</B> Prevent extinction?
+
+       <B>-inv</B>   Invert colors?
+
+       <B>-mag</B> <I>integer</I>
+              Magnification factor.
+
+       <B>-term</B> <I>string</I>
+              How to plot points.
+
+
+</PRE>
+<H4>MISCELLANY</H4><PRE>
+       An  interesting  change  to this code would involve making
+       the the updates asynchronous, which would avoid some  sub-
+       tle deadlock conditions that can occur in how the critters
+       move.  Moreover, the motion of the  overall  system  would
+       probably be more "lifelike".
+
+
+</PRE>
+<H4>BUGS</H4><PRE>
+       No  sanity  checks  are performed to make sure that any of
+       the options make sense.
+
+
+</PRE>
+<H4>AUTHOR</H4><PRE>
+       Copyright (c) 1997, Gary William Flake.
+
+       Permission granted for any use according to  the  standard
+       GNU ``copyleft'' agreement provided that the author's com-
+       ments are neither modified nor removed.   No  warranty  is
+       given or implied.
+</PRE>
+<HR>
+<ADDRESS>
+Man(1) output converted with
+<a href="http://www.oac.uci.edu/indiv/ehood/man2html.html">man2html</a>
+</ADDRESS>
+</BODY>
+</HTML>

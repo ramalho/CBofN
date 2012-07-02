@@ -1,0 +1,175 @@
+<HTML>
+<BODY>
+<PRE>
+<!-- Manpage converted by man2html 3.0.1 -->
+
+
+</PRE>
+<H4>NAME</H4><PRE>
+       boids - simulate a flock of android birds from Brooklyn
+
+
+</PRE>
+<H4>SYNOPSIS</H4><PRE>
+       <B>boids</B> <B>-help</B>
+         or
+       <B>boids</B>  <B>[-width</B>  <I>integer</I><B>]</B>  <B>[-height</B> <I>integer</I><B>]</B> <B>[-num</B> <I>integer</I><B>]</B>
+              <B>[-steps</B> <I>integer</I><B>]</B> <B>[-seed</B>  <I>integer</I><B>]</B>  <B>[-angle</B>  <I>double</I><B>]</B>
+              <B>[-vangle</B>  <I>double</I><B>]</B>  <B>[-rcopy</B>  <I>double</I><B>]</B> <B>[-rcent</B> <I>double</I><B>]</B>
+              <B>[-rvoid</B> <I>double</I><B>]</B>  <B>[-rviso</B>  <I>double</I><B>]</B>  <B>[-wcopy</B>  <I>double</I><B>]</B>
+              <B>[-wcent</B>  <I>double</I><B>]</B>  <B>[-wvoid</B>  <I>double</I><B>]</B>  <B>[-wviso</B> <I>double</I><B>]</B>
+              <B>[-wrand</B> <I>double</I><B>]</B> <B>[-dt</B> <I>double</I><B>]</B> <B>[-ddt</B>  <I>double</I><B>]</B>  <B>[-minv</B>
+              <I>double</I><B>]</B> <B>[-len</B> <I>integer</I><B>]</B> <B>[-psdump]</B> <B>[-inv]</B> <B>[-mag</B> <I>inte-</I>
+              <I>ger</I><B>]</B> <B>[-term</B> <I>string</I><B>]</B>
+
+
+</PRE>
+<H4>DESCRIPTION</H4><PRE>
+       Simulate a flock of boids according to rules  that  deter-
+       mine their individual behaviors as well as the ``physics''
+       of their universe.  A boid greedily attempts to apply four
+       rules  with  respect  to its neighbors: it wants to fly in
+       the same direction, be in the center of the local  cluster
+       of boids, avoid collisions with boids too close, and main-
+       tain a clear view ahead by  skirting  around  others  that
+       block  its  view.  Changing these rules can make the boids
+       behave like birds, gnats, bees, fish, or  magnetic  parti-
+       cles.   See the RULES section of the manual pages for more
+       details.
+
+
+</PRE>
+<H4>OPTIONS</H4><PRE>
+       <B>-width</B> <I>integer</I>
+              Width of the plot in pixels.
+
+       <B>-height</B> <I>integer</I>
+              Height of the plot in pixels.
+
+       <B>-num</B> <I>integer</I>
+              Number of boids.
+
+       <B>-steps</B> <I>integer</I>
+              Number of simulated steps.
+
+       <B>-seed</B> <I>integer</I>
+              Random seed for initial state.
+
+       <B>-angle</B> <I>double</I>
+              Number of viewing degrees.
+
+       <B>-vangle</B> <I>double</I>
+              Visual avoidance angle.
+
+       <B>-rcopy</B> <I>double</I>
+              Radius for copy vector.
+
+
+       <B>-rcent</B> <I>double</I>
+              Radius for centroid vector.
+
+       <B>-rvoid</B> <I>double</I>
+              Radius for avoidance vector.
+
+       <B>-rviso</B> <I>double</I>
+              Radius for visual avoidance vector.
+
+       <B>-wcopy</B> <I>double</I>
+              Weight for copy vector.
+
+       <B>-wcent</B> <I>double</I>
+              Weight for centroid vector.
+
+       <B>-wvoid</B> <I>double</I>
+              Weight for avoidance vector.
+
+       <B>-wviso</B> <I>double</I>
+              Weight for visual avoidance vector.
+
+       <B>-wrand</B> <I>double</I>
+              Weight for random vector.
+
+       <B>-dt</B> <I>double</I>
+              Time-step increment.
+
+       <B>-ddt</B> <I>double</I>
+              Momentum factor (0 &lt; ddt &lt; 1).
+
+       <B>-minv</B> <I>double</I>
+              Minimum velocity.
+
+       <B>-len</B> <I>integer</I>
+              Tail length.
+
+       <B>-psdump</B>
+              Dump PS at the very end?
+
+       <B>-inv</B>   Invert all colors?
+
+       <B>-mag</B> <I>integer</I>
+              Magnification factor.
+
+       <B>-term</B> <I>string</I>
+              How to plot points.
+
+
+</PRE>
+<H4>RULES</H4><PRE>
+       All of the rules have a weight option and a radius option.
+       The radius option specifies how close a boid need to be to
+       another in order for the  rule  to  be  acted  upon.   The
+       weight  is  used  when  combining all of the rules actions
+       into a single new velocity vector.
+
+
+       The four rules can be simply described as follows:
+
+          Centering: move towards the center of any boids in my
+                     viewing area.
+
+          Copying: attempt to move in the average direction of
+                   that all boids that can be seen are moving
+                   in.
+
+          Avoidance: ``Please don't stand so close to me.''
+                       Move away from any close flyers.
+
+          Visual: move in such a way that the bonehead
+                  obstructing your view no longer interferes.
+
+       The four rules are then normalized and added  together  to
+       make  the  next velocity vector of the boid.  All radii in
+       the rules are in terms of pixels.
+
+       You may wish to try turning on and off different  combina-
+       tions of the rules to see how the boids' behaviors change.
+       For example, if you turn off the avoidance rule,  increase
+       the  centering radius and weight, and increase the viewing
+       angle to nearly 360 degrees, then the  boids  will  behave
+       like  a  pack  of  wolves fighting over the center.  Other
+       changes can yield similar surprises.
+
+
+</PRE>
+<H4>BUGS</H4><PRE>
+       No sanity checks are performed to make sure  that  any  of
+       the options make sense.
+
+
+</PRE>
+<H4>AUTHOR</H4><PRE>
+       Copyright (c) 1997, Gary William Flake.
+
+       Permission  granted  for any use according to the standard
+       GNU ``copyleft'' agreement provided that the author's com-
+       ments  are  neither  modified nor removed.  No warranty is
+       given or implied.
+
+</PRE>
+<HR>
+<ADDRESS>
+Man(1) output converted with
+<a href="http://www.oac.uci.edu/indiv/ehood/man2html.html">man2html</a>
+</ADDRESS>
+</BODY>
+</HTML>

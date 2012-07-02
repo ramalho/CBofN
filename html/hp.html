@@ -1,0 +1,141 @@
+<HTML>
+<BODY>
+<PRE>
+<!-- Manpage converted by man2html 3.0.1 -->
+
+
+</PRE>
+<H4>NAME</H4><PRE>
+       hp - simulate the hodgepodge machine
+
+
+</PRE>
+<H4>SYNOPSIS</H4><PRE>
+       <B>hp</B> <B>-help</B>
+         or
+       <B>hp</B>     <B>[-width</B>  <I>integer</I><B>]</B>  <B>[-height</B> <I>integer</I><B>]</B> <B>[-states</B> <I>inte-</I>
+              <I>ger</I><B>]</B>  <B>[-steps</B>  <I>integer</I><B>]</B>  <B>[-seed</B>  <I>integer</I><B>]</B>   <B>[-diag]</B>
+              <B>[-wrap]</B>  <B>[-g</B>  <I>double</I><B>]</B>  <B>[-k1</B>  <I>double</I><B>]</B>  <B>[-k2</B>  <I>double</I><B>]</B>
+              <B>[-freq</B>  <I>integer</I><B>]</B>  <B>[-inv]</B>  <B>[-mag</B>   <I>integer</I><B>]</B>   <B>[-term</B>
+              <I>string</I><B>]</B>
+
+
+</PRE>
+<H4>DESCRIPTION</H4><PRE>
+       The  time evolution of the hodgepodge machine is simulated
+       and plotted according to the  specified  parameters.   The
+       neighborhood  of  a  cell  can  optionally  include or not
+       include diagonal cells  in  a  3x3  area;   Moreover,  the
+       neighborhood  can  also  wrap around the edges so that the
+       grid is topologically toroidal.  With a proper  choice  of
+       parameters, this system resembles the Belousov-Zhabotinsky
+       reaction which forms self-perpetuating spirals in  a  lat-
+       tice.   See  the  RULES section of the manual pages or the
+       source code for an explanation of  how  the  cells  change
+       over time.
+
+
+</PRE>
+<H4>OPTIONS</H4><PRE>
+       <B>-width</B> <I>integer</I>
+              Width of the plot in pixels.
+
+       <B>-height</B> <I>integer</I>
+              Height of the plot in pixels.
+
+       <B>-states</B> <I>integer</I>
+              Number of cell states.
+
+       <B>-steps</B> <I>integer</I>
+              Number of simulated steps.
+
+       <B>-seed</B> <I>integer</I>
+              Random seed for initial state.
+
+       <B>-diag</B>  Diagonal cells are neighbors?
+
+       <B>-wrap</B>  Use a wrap-around space?
+
+       <B>-g</B> <I>double</I>
+              Infection progression rate.
+
+       <B>-k1</B> <I>double</I>
+              First weighting parameter.
+
+       <B>-k2</B> <I>double</I>
+              Second weighting parameter.
+
+
+       <B>-freq</B> <I>integer</I>
+              Plot frequency.
+
+       <B>-inv</B>   Invert all colors?
+
+       <B>-mag</B> <I>integer</I>
+              Magnification factor.
+
+       <B>-term</B> <I>string</I>
+              How to plot points.
+
+
+</PRE>
+<H4>RULES</H4><PRE>
+       If  each cell can be in one of N states (labelled 0 to n -
+       1), then cells in state 0 are ``healthy,'' cells in  state
+       n - 1 are ``ill,'' and all other cells are ``infected.''
+
+       Within  a  cell's  neighborhood,  let  Nill,  Ninf, and S,
+       denote the number of ill cells,  the  number  of  infected
+       cells,  and  the  sum  of the states of all neighbors plus
+       this cell's state.  The next state is  determined  by  the
+       three rules:
+
+          Healthy: floor( Ninf / k1 ) + floor( Nill / k2 )
+
+          Infected: floor( S / ( Ninf + 1 ) ) + g
+
+          Ill: magically becomes healthy, thus 0.
+
+       Where  k1,  k2,  and g are the parameters specified by the
+       command line options.
+
+
+</PRE>
+<H4>MISCELLANY</H4><PRE>
+       If you move from (to) an 8 cell neighborhood to (from) a 4
+       cell  neighborhood try dividing (multiplying) k1 and k2 by
+       2 to produce a similar time evolution that  occurred  with
+       the previous neighborhood size.
+
+       For some reason, 4 cell neighborhoods seem to produce pat-
+       terns with more spirals.
+
+       This simulation can be frustratingly slow at times, so you
+       may  wish to use the -freq option to cut down on the over-
+       head of plotting the states.
+
+
+</PRE>
+<H4>BUGS</H4><PRE>
+       No sanity checks are performed to make sure  that  any  of
+       the options make sense.
+
+
+</PRE>
+<H4>AUTHOR</H4><PRE>
+       Copyright (c) 1997, Gary William Flake.
+
+       Permission  granted  for any use according to the standard
+       GNU ``copyleft'' agreement provided that the author's com-
+       ments  are  neither  modified nor removed.  No warranty is
+
+       given or implied.
+
+</PRE>
+<HR>
+<ADDRESS>
+Man(1) output converted with
+<a href="http://www.oac.uci.edu/indiv/ehood/man2html.html">man2html</a>
+</ADDRESS>
+</BODY>
+</HTML>

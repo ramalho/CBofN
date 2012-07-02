@@ -1,0 +1,162 @@
+<HTML>
+<BODY>
+<PRE>
+<!-- Manpage converted by man2html 3.0.1 -->
+
+
+</PRE>
+<H4>NAME</H4><PRE>
+       lsys - builds an L-system fractal from multiple rules
+
+
+</PRE>
+<H4>SYNOPSIS</H4><PRE>
+       <B>lsys</B> <B>-help</B>
+         or
+       <B>lsys</B>   <B>[-width</B>  <I>integer</I><B>]</B>  <B>[-height</B> <I>integer</I><B>]</B> <B>[-border</B> <I>inte-</I>
+              <I>ger</I><B>]</B> <B>[-depth</B> <I>integer</I><B>]</B>  <B>[-a0</B>  <I>double</I><B>]</B>  <B>[-da</B>  <I>double</I><B>]</B>
+              <B>[-ds</B>  <I>double</I><B>]</B> <B>[-unoise</B> <I>double</I><B>]</B> <B>[-rule</B> <I>...</I> <B>]</B> <B>[-axiom</B>
+              <I>string</I><B>]</B> <B>[-inv]</B> <B>[-mag</B> <I>integer</I><B>]</B> <B>[-term</B> <I>string</I><B>]</B>
+
+
+</PRE>
+<H4>DESCRIPTION</H4><PRE>
+       An L-system is computed according to the specified  axiom,
+       rules,  and step angle.  The L-system axiom is recursively
+       expanded for the specified depth, with 'F', 'G',  and  '|'
+       actions  resulting in movement of the virtual plotter, and
+       '+' and '-' commands resulting in rotation of the  virtual
+       plotter.   See  the  RULES  section of the manual page for
+       more information on the format for legal rules.
+
+
+</PRE>
+<H4>OPTIONS</H4><PRE>
+       <B>-width</B> <I>integer</I>
+              Width of the plot in pixels.
+
+       <B>-height</B> <I>integer</I>
+              Height of the plot in pixels.
+
+       <B>-border</B> <I>integer</I>
+              Approximate number of border pixels.
+
+       <B>-depth</B> <I>integer</I>
+              Recursion depth to use.
+
+       <B>-a0</B> <I>double</I>
+              Initial angle.
+
+       <B>-da</B> <I>double</I>
+              Delta angle for '+' and '-' commands.
+
+       <B>-ds</B> <I>double</I>
+              Delta step size.  Only  affects  '|'  commands  and
+              should be less than 1.
+
+       <B>-unoise</B> <I>double</I>
+              Amount of uniform noise to add to step angle.
+
+       <B>-rule</B> <I>...</I>
+              Specify  a  production  rule.  See RULES section of
+              manual page.
+
+       <B>-axiom</B> <I>string</I>
+              Starting axiom.
+
+       <B>-inv</B>   Invert all colors?
+
+       <B>-mag</B> <I>integer</I>
+              Magnification factor.
+
+       <B>-term</B> <I>string</I>
+              How to plot points.
+
+
+</PRE>
+<H4>RULES</H4><PRE>
+       The L-system rules should always  take  the  form  "x=..."
+       where  "x"  is  a  letter  and  the remaining portion is a
+       sequence of turtle graphics  commands,  which  operate  as
+       described below.
+
+       'F'  is  the draw forward command, which moves the plotter
+       forward by a fixed length, drawing a  line  from  the  old
+       position to the new position.
+
+       'G'  (Go  Forward)  is  similar to 'F', but only moves the
+       plotter and does not draw a line.
+
+       '+' and '-' turn the plotter to the right (or left)  by  a
+       fixed  angle  determined by the -da switch.  If an integer
+       precedes the '+' or '-' symbol, then  the  plotter  effec-
+       tively makes that number of right-hand turns.
+
+       '['  saves  the  current position and angle of the plotter
+       for later use, which is restored by the ']' command.
+
+       '|' move the turtle forward by a length computed from  the
+       execution  depth,  drawing a line from the old position to
+       the new.  Thus, this command is similar to 'F' but  it  is
+       not  recursively expanded.  If DS is the value supplied by
+       the <B>-ds</B> switch, then the step size will be proportional to
+       DS^depth.   This allows for certain types of figures to be
+       drawn that would otherwise be difficult to express without
+       this command.
+
+
+</PRE>
+<H4>EXAMPLES</H4><PRE>
+       A weed:
+              <B>lsys</B> <B>-da</B> <B>20</B> <B>-rule</B> <B>"F=|[-F]|[+F][-F]F"</B>
+
+       Kock curve:
+              <B>lsys</B> <B>-da</B> <B>60</B> <B>-rule</B> <B>F=F-F++F-F</B>
+
+       Penrose Snowflake:
+              <B>lsys</B>    <B>-da</B>    <B>18</B>    <B>-axiom</B>   <B>F4-F4-F4-F4-F</B>   <B>-rule</B>
+              <B>F=F4-F4-F10-F++F4-F</B>
+
+       Sierpinski Arrowhead:
+              <B>lsys</B> <B>-da</B> <B>60</B> <B>-rule</B>  <B>"F=[-G+++F][-G+F][GG--F]"</B>  <B>-rule</B>
+              <B>G=GG</B>
+
+       See  the  author's  book,  "The  Computational  Beauty  of
+       Nature," for more examples.
+
+
+
+</PRE>
+<H4>MISCELLANY</H4><PRE>
+       If you are using a UNIX command shell, be  sure  to  quote
+       any  rules  with brackets so that the shell passes them to
+       the program correctly.
+
+
+</PRE>
+<H4>BUGS</H4><PRE>
+       No sanity checks are performed to make sure  that  any  of
+       the options make sense.
+
+       The  border  size is only approximately calculated because
+       the author felt a bit lazy at the  time  of  writing  this
+       program.  However, it's pretty close for most values.
+
+
+</PRE>
+<H4>AUTHOR</H4><PRE>
+       Copyright (c) 1997, Gary William Flake.
+
+       Permission  granted  for any use according to the standard
+       GNU ``copyleft'' agreement provided that the author's com-
+       ments  are  neither  modified nor removed.  No warranty is
+       given or implied.
+
+</PRE>
+<HR>
+<ADDRESS>
+Man(1) output converted with
+<a href="http://www.oac.uci.edu/indiv/ehood/man2html.html">man2html</a>
+</ADDRESS>
+</BODY>
+</HTML>

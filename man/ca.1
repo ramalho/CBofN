@@ -1,0 +1,89 @@
+.TH CA 1
+.SH NAME
+.PD 0
+.TP
+ca \- simulate arbitrary one\-dimensional cellular automata
+.PD 1
+.SH SYNOPSIS
+.PD 0
+.TP
+.B ca \fB-help
+.LP
+\ \ or
+.TP
+.B ca
+\fB[\-width \fIinteger\fP]
+[\-height \fIinteger\fP]
+[\-states \fIinteger\fP]
+[\-radius \fIinteger\fP]
+[\-seed \fIinteger\fP]
+[\-wrap]
+[\-rules \fIstring\fP]
+[\-init \fIstring\fP]
+[\-lambda \fIdouble\fP]
+[\-sq]
+[\-bin]
+[\-inv]
+[\-mag \fIinteger\fP]
+[\-term \fIstring\fP]
+.PD 1
+.SH DESCRIPTION
+Computes a one-dimensional cellular automata.  The evolution of the 
+CA is determined by the number of states, the radius size, the initial 
+state, and the supplied rule.  A rule is specified by a (states - 1) * 
+(radius * 2 + 1) length string.  At each time step a sum of each cell 
+plus all of its neighbors within the radius is computed.  That sum is 
+used as an index into the rules string which determines the next step 
+For example, with radius = 1 and states = 2 the rule \"0110\" specifies 
+that sums of 0 and 3 map to the 0 state, and sums of 1 and 2 map to the 
+1 state.  A negative init string randomly initializes the starting 
+states. If the init string is \"-N\" then each cell has a 1 in N chance 
+of being non-zero.
+.SH OPTIONS
+.IP \fB\-width\ \fIinteger\fP
+Width of the plot in pixels.
+.IP \fB\-height\ \fIinteger\fP
+Height of the plot in pixels.
+.IP \fB\-states\ \fIinteger\fP
+Number of CA states.
+.IP \fB\-radius\ \fIinteger\fP
+Radius of CA neighborhood.
+.IP \fB\-seed\ \fIinteger\fP
+Random seed.
+.IP \fB\-wrap
+Use a wrap-around space?
+.IP \fB\-rules\ \fIstring\fP
+CA rules to use.
+.IP \fB\-init\ \fIstring\fP
+Starting state (< 0 is random).
+.IP \fB\-lambda\ \fIdouble\fP
+Lambda value for random rules.
+.IP \fB\-sq
+Enforce strong quiescence?
+.IP \fB\-bin
+Binary colors?
+.IP \fB\-inv
+Invert all colors?
+.IP \fB\-mag\ \fIinteger\fP
+Magnification factor.
+.IP \fB\-term\ \fIstring\fP
+How to plot points.
+.SH MISCELLANY
+When supplying a lambda value for a random rule, it may not
+be possible to find a string with that lambda value because
+one may not exist.  In this case, the program will do its
+best to find one as close as possible.  In any event, the
+algorithm for finding random rules strings for a specified
+lambda value is non-deterministic and may not always find
+a perfect match even if one exists.  However, it will work
+well with high probability, and even when it doesn't find
+a perfect match it almost always gets close.
+.SH BUGS
+No sanity checks are performed to make sure that any of the
+options make sense.
+.SH AUTHOR
+Copyright (c) 1997, Gary William Flake.
+
+Permission granted for any use according to the standard GNU
+``copyleft'' agreement provided that the author's comments are
+neither modified nor removed.  No warranty is given or implied.

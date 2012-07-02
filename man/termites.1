@@ -1,0 +1,66 @@
+.TH TERMITE 1
+.SH NAME
+.PD 0
+.TP
+termite \- simulate a population of termites
+.PD 1
+.SH SYNOPSIS
+.PD 0
+.TP
+.B termite \fB-help
+.LP
+\ \ or
+.TP
+.B termite
+\fB[\-width \fIinteger\fP]
+[\-height \fIinteger\fP]
+[\-num \fIinteger\fP]
+[\-dense \fIdouble\fP]
+[\-steps \fIinteger\fP]
+[\-seed \fIinteger\fP]
+[\-inv]
+[\-mag \fIinteger\fP]
+[\-term \fIstring\fP]
+.PD 1
+.SH DESCRIPTION
+Simulate a population of termites which do a random walk while possibly 
+carrying a wood chip.  Under normal circumstances, the termites will 
+self-organize and move the wood chips into piles without a global leader. 
+The termites' behavior is dictated by the following set of rules: 
+If a termite is not carrying anything and she bumps into 
+a chip, then she picks it up, reverses direction, and continues with the 
+random walk.  If she is carrying a chip and bumps into another, she drops 
+her chip, turns around, and starts walking again.  Otherwise, she just 
+does a random walk whether she is carrying a chip or not.
+.SH OPTIONS
+.IP \fB\-width\ \fIinteger\fP
+Width of the plot in pixels.
+.IP \fB\-height\ \fIinteger\fP
+Height of the plot in pixels.
+.IP \fB\-num\ \fIinteger\fP
+Number of termites in population.
+.IP \fB\-dense\ \fIdouble\fP
+Density of chips at start.
+.IP \fB\-steps\ \fIinteger\fP
+Number of simulated steps.
+.IP \fB\-seed\ \fIinteger\fP
+Random seed for initial state.
+.IP \fB\-inv
+Invert all colors?
+.IP \fB\-mag\ \fIinteger\fP
+Magnification factor.
+.IP \fB\-term\ \fIstring\fP
+How to plot points.
+.SH MISCELLANY
+The walking pattern of the termites is not actually a strict
+random walk.  Instead, at each time step they randomly turn
+-45, 0, or 45 degrees with equal probability.
+.SH BUGS
+No sanity checks are performed to make sure that any of the
+options make sense.
+.SH AUTHOR
+Copyright (c) 1997, Gary William Flake.
+
+Permission granted for any use according to the standard GNU
+``copyleft'' agreement provided that the author's comments are
+neither modified nor removed.  No warranty is given or implied.

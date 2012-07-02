@@ -1,0 +1,114 @@
+<HTML>
+<BODY>
+<PRE>
+<!-- Manpage converted by man2html 3.0.1 -->
+
+
+</PRE>
+<H4>NAME</H4><PRE>
+       hopfield - solve a task assignment problem via a Hopfield
+              network
+
+
+</PRE>
+<H4>SYNOPSIS</H4><PRE>
+       <B>hopfield</B> <B>-help</B>
+         or
+       <B>hopfield</B>
+              <B>[-specs</B>  <I>string</I><B>]</B>  <B>[-dt</B> <I>double</I><B>]</B> <B>[-tau</B> <I>double</I><B>]</B> <B>[-gain</B>
+              <I>double</I><B>]</B> <B>[-scale</B>  <I>double</I><B>]</B>  <B>[-seed</B>  <I>integer</I><B>]</B>  <B>[-steps</B>
+              <I>integer</I><B>]</B>  <B>[-gray</B>  <I>integer</I><B>]</B>  <B>[-inv]</B>  <B>[-mag</B>  <I>integer</I><B>]</B>
+              <B>[-term</B> <I>string</I><B>]</B>
+
+
+</PRE>
+<H4>DESCRIPTION</H4><PRE>
+       Solve a task assignment problem via a Hopfield neural net-
+       work  while  plotting  the activations of the neurons over
+       time.  The program uses the K-out-of-N  rule  for  setting
+       the external inputs and synapse strength of the neurons.
+
+
+</PRE>
+<H4>OPTIONS</H4><PRE>
+       <B>-specs</B> <I>string</I>
+              Problem specification file.
+
+       <B>-dt</B> <I>double</I>
+              Time step increment.
+
+       <B>-tau</B> <I>double</I>
+              Decay term.
+
+       <B>-gain</B> <I>double</I>
+              Sigmoidal gain.
+
+       <B>-scale</B> <I>double</I>
+              Scaling for inputs.
+
+       <B>-seed</B> <I>integer</I>
+              Random seed for initial state.
+
+       <B>-steps</B> <I>integer</I>
+              Number of time steps.
+
+       <B>-gray</B> <I>integer</I>
+              Number of gray levels.
+
+       <B>-inv</B>   Invert all colors?
+
+       <B>-mag</B> <I>integer</I>
+              Magnification factor.
+
+       <B>-term</B> <I>string</I>
+              How to plot points.
+
+
+</PRE>
+<H4>MISCELLANY</H4><PRE>
+       As  mentioned  before, the weights and external inputs are
+
+       set according to the K-out-of-N rule which states that  if
+       we  have N neurons in a mutually connected sub-network and
+       that we wish this subset to converge with exactly  K  neu-
+       rons  activated,  then  each neuron should be connected to
+       every other neuron with a weights of  -2  and  receive  an
+       external  input  of (2K - 1).  Since we must produce solu-
+       tions that look like permutation matrices, each neuron  is
+       in  2  K-out-of-N  subsets, one for the column and one for
+       the row.  Thus, all neurons inhibit all other  neurons  in
+       the  same  column  or  row  with  -2 and must (on average)
+       receive a net input of 2 since they are all in  two  sets.
+       The external inputs are slightly adjusted to favor neurons
+       that represent more productive task performers.   See  the
+       source code for more details.
+
+
+</PRE>
+<H4>BUGS</H4><PRE>
+       No  sanity  checks  are performed to make sure that any of
+       the options make sense.
+
+       The final cost of the solution is printed at  the  end  of
+       the  simulation;  however, no check is done to insure that
+       the system has actually converged.  Hence,  it  may  print
+       out nonsense results.
+
+
+</PRE>
+<H4>AUTHOR</H4><PRE>
+       Copyright (c) 1997, Gary William Flake.
+
+       Permission  granted  for any use according to the standard
+       GNU ``copyleft'' agreement provided that the author's com-
+       ments  are  neither  modified nor removed.  No warranty is
+       given or implied.
+
+</PRE>
+<HR>
+<ADDRESS>
+Man(1) output converted with
+<a href="http://www.oac.uci.edu/indiv/ehood/man2html.html">man2html</a>
+</ADDRESS>
+</BODY>
+</HTML>

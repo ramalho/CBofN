@@ -1,0 +1,136 @@
+<HTML>
+<BODY>
+<PRE>
+<!-- Manpage converted by man2html 3.0.1 -->
+
+
+</PRE>
+<H4>NAME</H4><PRE>
+       bifur1d - plot bifurcations from a one-dimensional map
+
+
+</PRE>
+<H4>SYNOPSIS</H4><PRE>
+       <B>bifur1d</B> <B>-help</B>
+         or
+       <B>bifur1d</B>
+              <B>[-width</B>  <I>integer</I><B>]</B> <B>[-height</B> <I>integer</I><B>]</B> <B>[-skip</B> <I>integer</I><B>]</B>
+              <B>[-rmin</B> <I>double</I><B>]</B> <B>[-rmax</B> <I>double</I><B>]</B> <B>[-func</B> <I>string</I><B>]</B> <B>[-fac-</B>
+              <B>tor</B>  <I>double</I><B>]</B>  <B>[-ymin</B>  <I>double</I><B>]</B>  <B>[-ymax</B> <I>double</I><B>]</B> <B>[-aux</B>
+              <I>double</I><B>]</B> <B>[-box</B> <I>integer</I><B>]</B> <B>[-brmin</B> <I>double</I><B>]</B> <B>[-brmax</B> <I>dou-</I>
+              <I>ble</I><B>]</B>  <B>[-bymin</B>  <I>double</I><B>]</B> <B>[-bymax</B> <I>double</I><B>]</B> <B>[-inv]</B> <B>[-mag</B>
+              <I>integer</I><B>]</B> <B>[-term</B> <I>string</I><B>]</B>
+
+
+</PRE>
+<H4>DESCRIPTION</H4><PRE>
+       A bifurcation diagram is plotted for a one-dimensional map
+       according  to  the specified options.  In general, the map
+       is iterated for several different values of the 'r' param-
+       eter  so  that  the  long  term behavior of the map can be
+       observed as a function of  are  supported.   User  defined
+       maps  can  be  added  to  the  file maps1d.c, but you must
+       recompile the program.
+
+
+</PRE>
+<H4>OPTIONS</H4><PRE>
+       <B>-width</B> <I>integer</I>
+              Width of the plot in pixels.
+
+       <B>-height</B> <I>integer</I>
+              Height of the plot in pixels.
+
+       <B>-skip</B> <I>integer</I>
+              Number of initial points to skip.
+
+       <B>-rmin</B> <I>double</I>
+              Smallest value for r.
+
+       <B>-rmax</B> <I>double</I>
+              Largest value for r.
+
+       <B>-func</B> <I>string</I>
+              Map function to use (one of 'log',  'tent',  'sin',
+              or 'gauss').
+
+       <B>-factor</B> <I>double</I>
+              Multiplicative factor for number of iterates.
+
+       <B>-ymin</B> <I>double</I>
+              Smallest value for y range.
+
+       <B>-ymax</B> <I>double</I>
+              Largest value for y range.
+
+       <B>-aux</B> <I>double</I>
+              Auxiliary map parameter.
+
+       <B>-box</B> <I>integer</I>
+              Line width for a box.
+
+       <B>-brmin</B> <I>double</I>
+              Smallest r-value for the box.
+
+       <B>-brmax</B> <I>double</I>
+              Largest r-value for the box.
+
+       <B>-bymin</B> <I>double</I>
+              Smallest value for box y range.
+
+       <B>-bymax</B> <I>double</I>
+              Largest value for box y range.
+
+       <B>-inv</B>   Invert all colors?
+
+       <B>-mag</B> <I>integer</I>
+              Magnification factor.
+
+       <B>-term</B> <I>string</I>
+              How to plot points.
+
+
+</PRE>
+<H4>MAPS</H4><PRE>
+       The following four one-dimensional maps are allowed:
+
+       Logistic Map:
+              x(t+1) = 4 * r * x(t) * (1.0 - x(t))
+
+       Tent Map:
+              x(t+1) = (x(t) &lt;= 0.5) ? 2 * r * x(t) : 2r * (1.0 -
+              x(t))
+
+       Sine Map:
+              x(t+1) = sin(x(t) * PI * aux * 2 * r) / 2 + 0.5
+
+       Gaussian Map:
+              x(t+1) = r * exp(-aux * (x(t)  -  0.5)  *  (x(t)  -
+              0.5))
+
+       See  the  file  "maps1d.c"  to see how to add user-defined
+       maps.
+
+
+</PRE>
+<H4>BUGS</H4><PRE>
+       No sanity checks are performed to make sure  that  any  of
+       the options make sense.
+
+
+</PRE>
+<H4>AUTHOR</H4><PRE>
+       Copyright (c) 1997, Gary William Flake.
+
+       Permission  granted  for any use according to the standard
+       GNU ``copyleft'' agreement provided that the author's com-
+       ments  are  neither  modified nor removed.  No warranty is
+       given or implied.
+</PRE>
+<HR>
+<ADDRESS>
+Man(1) output converted with
+<a href="http://www.oac.uci.edu/indiv/ehood/man2html.html">man2html</a>
+</ADDRESS>
+</BODY>
+</HTML>

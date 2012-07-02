@@ -1,0 +1,120 @@
+<HTML>
+<BODY>
+<PRE>
+<!-- Manpage converted by man2html 3.0.1 -->
+
+
+</PRE>
+<H4>NAME</H4><PRE>
+       henwarp - warps a square into the phase space of the Henon
+              system
+
+
+</PRE>
+<H4>SYNOPSIS</H4><PRE>
+       <B>henwarp</B> <B>-help</B>
+         or
+       <B>henwarp</B>
+              <B>[-width</B>  <I>integer</I><B>]</B>  <B>[-height</B>  <I>integer</I><B>]</B> <B>[-swap]</B> <B>[-len</B>
+              <I>integer</I><B>]</B> <B>[-count</B> <I>integer</I><B>]</B> <B>[-A</B> <I>double</I><B>]</B>  <B>[-B</B>  <I>double</I><B>]</B>
+              <B>[-ulx</B>  <I>double</I><B>]</B>  <B>[-uly</B>  <I>double</I><B>]</B> <B>[-lly</B> <I>double</I><B>]</B> <B>[-inv]</B>
+              <B>[-mag</B> <I>integer</I><B>]</B> <B>[-term</B> <I>string</I><B>]</B>
+
+
+</PRE>
+<H4>DESCRIPTION</H4><PRE>
+       A square (initially centered about the origin)  is  trans-
+       formed  by  the  Henon  system,  which is described by the
+       equation x(t+1) = A - x(t)^2 + B * x(t - 1), a fixed  num-
+       ber of times according to the specified parameters.
+
+
+</PRE>
+<H4>OPTIONS</H4><PRE>
+       <B>-width</B> <I>integer</I>
+              Width of the plot in pixels.
+
+       <B>-height</B> <I>integer</I>
+              Height of the plot in pixels.
+
+       <B>-swap</B>  Swap the x and y axis.
+
+       <B>-len</B> <I>integer</I>
+              Length of edge of square.
+
+       <B>-count</B> <I>integer</I>
+              Number of transformations.
+
+       <B>-A</B> <I>double</I>
+              Value of the A parameter.
+
+       <B>-B</B> <I>double</I>
+              Value of the B parameter.
+
+       <B>-ulx</B> <I>double</I>
+              Upper-left corner x-coordinate.
+
+       <B>-uly</B> <I>double</I>
+              Upper-left corner y-coordinate.
+
+       <B>-lly</B> <I>double</I>
+              Lower-left corner y-coordinate.
+
+       <B>-inv</B>   Invert all colors?
+
+       <B>-mag</B> <I>integer</I>
+              Magnification factor.
+
+
+       <B>-term</B> <I>string</I>
+              How to plot points.
+
+
+</PRE>
+<H4>MISCELLANY</H4><PRE>
+       You  may wish to try this with a small length for the size
+       of square and watch how the resulting plot changes as  you
+       slowly  increase  the  value  passed  to the -count option
+       starting at zero.   The square will slowly spread out  and
+       converge to the attractor of the system.
+
+       The  method  for  choosing  the  viewable  region may seem
+       counter-intuitive at first, but it has some  nice  proper-
+       ties.   In  particular, selecting the exact (x, y) coordi-
+       nates for the upper-left corner  and  only  selecting  the
+       lower right y coordinate forces both the x and y scales to
+       be identical since all scales are uniquely  determined  by
+       these values along with the plot width and height.  If you
+       then change the width or height of the plot, the  relative
+       scales  will still match up.  The options for making a box
+       work similarly.
+
+
+</PRE>
+<H4>BUGS</H4><PRE>
+       The length of the square is in pixels and works best if it
+       is an odd value.  With even numbered values it can produce
+       a gap in the plot  for  small  values  supplied  with  the
+       -count option.
+
+       No  sanity  checks  are performed to make sure that any of
+       the options make sense.
+
+
+</PRE>
+<H4>AUTHOR</H4><PRE>
+       Copyright (c) 1997, Gary William Flake.
+
+       Permission granted for any use according to  the  standard
+       GNU ``copyleft'' agreement provided that the author's com-
+       ments are neither modified nor removed.   No  warranty  is
+       given or implied.
+
+</PRE>
+<HR>
+<ADDRESS>
+Man(1) output converted with
+<a href="http://www.oac.uci.edu/indiv/ehood/man2html.html">man2html</a>
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,105 @@
+.TH GSW 1
+.SH NAME
+.PD 0
+.TP
+gsw \- simulate a three species individual\-based ecosystem
+.PD 1
+.SH SYNOPSIS
+.PD 0
+.TP
+.B gsw \fB-help
+.LP
+\ \ or
+.TP
+.B gsw
+\fB[\-width \fIinteger\fP]
+[\-height \fIinteger\fP]
+[\-steps \fIinteger\fP]
+[\-seed \fIinteger\fP]
+[\-plants \fIinteger\fP]
+[\-herbs \fIinteger\fP]
+[\-carns \fIinteger\fP]
+[\-pmin \fIinteger\fP]
+[\-pmax \fIinteger\fP]
+[\-Ep \fIinteger\fP]
+[\-Eh \fIinteger\fP]
+[\-Ec \fIinteger\fP]
+[\-Ch \fIinteger\fP]
+[\-Cc \fIinteger\fP]
+[\-Pt \fIinteger\fP]
+[\-samp \fIinteger\fP]
+[\-stats]
+[\-pfreq \fIinteger\fP]
+[\-noext]
+[\-inv]
+[\-mag \fIinteger\fP]
+[\-term \fIstring\fP]
+.PD 1
+.SH DESCRIPTION
+The time evolution of an individual-based three species predator-prey 
+ecosystem is simulated according to the specified parameters.  The three 
+species consist of plants, herbivores, and carnivores (grass, sheep, and 
+wolves; hence the name GSW).  Updates are done synchronously, and each 
+species has several parameters which can control the life cycle, from 
+the ability to give birth, to the likelihood of starvation.  Population 
+statistics of the three species can be calculated over a subset of the 
+entire grid.
+.SH OPTIONS
+.IP \fB\-width\ \fIinteger\fP
+Width of the plot in pixels.
+.IP \fB\-height\ \fIinteger\fP
+Height of the plot in pixels.
+.IP \fB\-steps\ \fIinteger\fP
+Number of simulated steps.
+.IP \fB\-seed\ \fIinteger\fP
+Random seed for initial state.
+.IP \fB\-plants\ \fIinteger\fP
+Initial number of plants.
+.IP \fB\-herbs\ \fIinteger\fP
+Initial number of herbivores.
+.IP \fB\-carns\ \fIinteger\fP
+Initial number of carnivores.
+.IP \fB\-pmin\ \fIinteger\fP
+Minimum plants in vicinity to make new plant.
+.IP \fB\-pmax\ \fIinteger\fP
+Maximum allowed plants in vicinity to make new plant.
+.IP \fB\-Ep\ \fIinteger\fP
+Energy of plant.
+.IP \fB\-Eh\ \fIinteger\fP
+Energy of herbivore.
+.IP \fB\-Ec\ \fIinteger\fP
+Energy of carnivore.
+.IP \fB\-Ch\ \fIinteger\fP
+Step energy cost for herbivores.
+.IP \fB\-Cc\ \fIinteger\fP
+Step energy cost for carnivores.
+.IP \fB\-Pt\ \fIinteger\fP
+Number of steps to grow plant.
+.IP \fB\-samp\ \fIinteger\fP
+Size of subsample statistaics.
+.IP \fB\-stats
+Show statistics?
+.IP \fB\-pfreq\ \fIinteger\fP
+Plot frequency.
+.IP \fB\-noext
+Prevent extinction?
+.IP \fB\-inv
+Invert colors?
+.IP \fB\-mag\ \fIinteger\fP
+Magnification factor.
+.IP \fB\-term\ \fIstring\fP
+How to plot points.
+.SH MISCELLANY
+An interesting change to this code would involve making the
+the updates asynchronous, which would avoid some subtle deadlock
+conditions that can occur in how the critters move.  Moreover,
+the motion of the overall system would probably be more "lifelike".
+.SH BUGS
+No sanity checks are performed to make sure that any of the
+options make sense.
+.SH AUTHOR
+Copyright (c) 1997, Gary William Flake.
+
+Permission granted for any use according to the standard GNU
+``copyleft'' agreement provided that the author's comments are
+neither modified nor removed.  No warranty is given or implied.

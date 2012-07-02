@@ -1,0 +1,94 @@
+.TH MLP 1
+.SH NAME
+.PD 0
+.TP
+mlp \- train a multilayer perceptron with backprop
+.PD 1
+.SH SYNOPSIS
+.PD 0
+.TP
+.B mlp \fB-help
+.LP
+\ \ or
+.TP
+.B mlp
+\fB[\-dfile \fIstring\fP]
+[\-steps \fIinteger\fP]
+[\-seed \fIinteger\fP]
+[\-freq \fIinteger\fP]
+[\-numin \fIinteger\fP]
+[\-numhid \fIinteger\fP]
+[\-numout \fIinteger\fP]
+[\-lrate \fIdouble\fP]
+[\-mrate \fIdouble\fP]
+[\-winit \fIdouble\fP]
+[\-linout]
+[\-pdump]
+[\-gdump]
+.PD 1
+.SH DESCRIPTION
+Train a multilayer perceptron with a single hidden layer of neurons 
+on a set of data contained in a file using the backpropagation learning 
+algorithm with momentum.  Output units can be linear or sigmoidal, 
+allowing you to model both discrete and continuous output target values.
+.SH OPTIONS
+.IP \fB\-dfile\ \fIstring\fP
+Training data file.
+.IP \fB\-steps\ \fIinteger\fP
+Number of simulated steps.
+.IP \fB\-seed\ \fIinteger\fP
+Random seed for initial state.
+.IP \fB\-freq\ \fIinteger\fP
+Status print frequency.
+.IP \fB\-numin\ \fIinteger\fP
+Number of inputs.
+.IP \fB\-numhid\ \fIinteger\fP
+Number of hidden nodes.
+.IP \fB\-numout\ \fIinteger\fP
+Number of outputs.
+.IP \fB\-lrate\ \fIdouble\fP
+Learning rate.
+.IP \fB\-mrate\ \fIdouble\fP
+Momentum rate.
+.IP \fB\-winit\ \fIdouble\fP
+Weight init factor
+.IP \fB\-linout
+Use linear outputs?
+.IP \fB\-pdump
+Dump patterns at end of run?
+.IP \fB\-gdump
+Dump gnuplot commands at end?
+.SH MISCELLANY
+The number of inputs and outputs must agree with the format of
+your training data file.  The program expects to find training
+patterns listed one after another with each training pattern
+consisting of the inputs followed by the target outputs.
+
+If the -pdump switch is used, then the patterns will printed to
+stdout.  Hence,redirect this to a file if you want to save it.
+
+You should always use linear outputs if your target values are
+continuous.
+
+The error value displayed via stderr is the root mean squared
+error taken over the entire data step.  Calculating this error
+measure is typically far more expensive than a single training
+step, so you may wish to use the -freq option to make it happen
+less frequently.
+
+If you network doesn't converge to anything useful, try
+increasing the number of hidden nodes.  Moreover, you may need to
+tweak the learning rate and momentum term.  This is just one of
+the curses of backprop.
+.SH BUGS
+The -gplot switch isn't very useful as it only works on the first
+output neuron.
+
+No sanity checks are performed to make sure that any of the
+options make sense.
+.SH AUTHOR
+Copyright (c) 1997, Gary William Flake.
+
+Permission granted for any use according to the standard GNU
+``copyleft'' agreement provided that the author's comments are
+neither modified nor removed.  No warranty is given or implied.

@@ -1,0 +1,114 @@
+<HTML>
+<BODY>
+<PRE>
+<!-- Manpage converted by man2html 3.0.1 -->
+
+
+</PRE>
+<H4>NAME</H4><PRE>
+       henbif - plot a bifurcation diagram for the Henon system
+
+
+</PRE>
+<H4>SYNOPSIS</H4><PRE>
+       <B>henbif</B> <B>-help</B>
+         or
+       <B>henbif</B> <B>[-width</B>  <I>integer</I><B>]</B> <B>[-height</B> <I>integer</I><B>]</B> <B>[-skip</B> <I>integer</I><B>]</B>
+              <B>[-abmin</B> <I>double</I><B>]</B> <B>[-abmax</B> <I>double</I><B>]</B> <B>[-ab]</B>  <B>[-A</B>  <I>double</I><B>]</B>
+              <B>[-B</B>  <I>double</I><B>]</B> <B>[-factor</B> <I>double</I><B>]</B> <B>[-ymin</B> <I>double</I><B>]</B> <B>[-ymax</B>
+              <I>double</I><B>]</B> <B>[-box</B> <I>integer</I><B>]</B> <B>[-brmin</B> <I>double</I><B>]</B> <B>[-brmax</B> <I>dou-</I>
+              <I>ble</I><B>]</B>  <B>[-bymin</B>  <I>double</I><B>]</B> <B>[-bymax</B> <I>double</I><B>]</B> <B>[-inv]</B> <B>[-mag</B>
+              <I>integer</I><B>]</B> <B>[-term</B> <I>string</I><B>]</B>
+
+
+</PRE>
+<H4>DESCRIPTION</H4><PRE>
+       A bifurcation  diagram  of  the  Henon  system,  which  is
+       described  by the equation x(t+1) = A - x(t)^2 + B * x(t -
+       1), is plotted  according  to  the  specified  parameters.
+       Either  of  the  parameters  (A or B) can be varied in the
+       plot.
+
+
+</PRE>
+<H4>OPTIONS</H4><PRE>
+       <B>-width</B> <I>integer</I>
+              Width of the plot in pixels.
+
+       <B>-height</B> <I>integer</I>
+              Height of the plot in pixels.
+
+       <B>-skip</B> <I>integer</I>
+              Number of initial points to skip.
+
+       <B>-abmin</B> <I>double</I>
+              Smallest value for A (or B).
+
+       <B>-abmax</B> <I>double</I>
+              Largest value for A (or B).
+
+       <B>-ab</B>    If TRUE, plot for A; B otherwise.
+
+       <B>-A</B> <I>double</I>
+              Value of the A parameter.
+
+       <B>-B</B> <I>double</I>
+              Value of the B parameter.
+
+       <B>-factor</B> <I>double</I>
+              Multiplicative factor for iterates.
+
+       <B>-ymin</B> <I>double</I>
+              Smallest value for y range.
+
+       <B>-ymax</B> <I>double</I>
+              Largest value for y range.
+
+
+       <B>-box</B> <I>integer</I>
+              Line width for a box.
+
+       <B>-brmin</B> <I>double</I>
+              Smallest r-value for the box.
+
+       <B>-brmax</B> <I>double</I>
+              Largest r-value for the box.
+
+       <B>-bymin</B> <I>double</I>
+              Smallest value for box y range.
+
+       <B>-bymax</B> <I>double</I>
+              Largest value for box y range.
+
+       <B>-inv</B>   Invert all colors?
+
+       <B>-mag</B> <I>integer</I>
+              Magnification factor.
+
+       <B>-term</B> <I>string</I>
+              How to plot points.
+
+
+</PRE>
+<H4>BUGS</H4><PRE>
+       No sanity checks are performed to make sure  that  any  of
+       the options make sense.
+
+
+</PRE>
+<H4>AUTHOR</H4><PRE>
+       Copyright (c) 1997, Gary William Flake.
+
+       Permission  granted  for any use according to the standard
+       GNU ``copyleft'' agreement provided that the author's com-
+       ments  are  neither  modified nor removed.  No warranty is
+       given or implied.
+
+</PRE>
+<HR>
+<ADDRESS>
+Man(1) output converted with
+<a href="http://www.oac.uci.edu/indiv/ehood/man2html.html">man2html</a>
+</ADDRESS>
+</BODY>
+</HTML>

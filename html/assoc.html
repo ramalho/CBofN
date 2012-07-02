@@ -1,0 +1,111 @@
+<HTML>
+<BODY>
+<PRE>
+<!-- Manpage converted by man2html 3.0.1 -->
+
+
+</PRE>
+<H4>NAME</H4><PRE>
+       assoc - retrieve associative memories
+
+
+</PRE>
+<H4>SYNOPSIS</H4><PRE>
+       <B>assoc</B> <B>-help</B>
+         or
+       <B>assoc</B>  <B>[-pfile</B>  <I>...</I><B>]</B>   <B>[-tfile</B>  <I>string</I><B>]</B>  <B>[-local</B>  <I>integer</I><B>]</B>
+              <B>[-cut</B>  <I>double</I><B>]</B>  <B>[-pprob</B>  <I>double</I><B>]</B>  <B>[-noise</B>   <I>double</I><B>]</B>
+              <B>[-seed</B> <I>integer</I><B>]</B> <B>[-steps</B> <I>integer</I><B>]</B> <B>[-inv]</B> <B>[-mag</B> <I>inte-</I>
+              <I>ger</I><B>]</B> <B>[-term</B> <I>string</I><B>]</B>
+
+
+</PRE>
+<H4>DESCRIPTION</H4><PRE>
+       Attempt to reconstruct a potentially corrupted image  from
+       a  McCulloch-Pitts feedback neural network that acts as an
+       associative memory.  The weights of the network are deter-
+       mined  via Hebb's rule after reading in multiple patterns.
+       Weights can be pruned either by size,  locality,  or  ran-
+       domly.
+
+
+</PRE>
+<H4>OPTIONS</H4><PRE>
+       <B>-pfile</B> <I>...</I>
+              File with pattern to store.
+
+       <B>-tfile</B> <I>string</I>
+              File with test pattern.
+
+       <B>-local</B> <I>integer</I>
+              locality of permitted weights
+
+       <B>-cut</B> <I>double</I>
+              Cutoff size for weights.
+
+       <B>-pprob</B> <I>double</I>
+              Probability of random pruning.
+
+       <B>-noise</B> <I>double</I>
+              Amount of noise for test case.
+
+       <B>-seed</B> <I>integer</I>
+              Random seed for initial state.
+
+       <B>-steps</B> <I>integer</I>
+              Number of time steps.
+
+       <B>-inv</B>   Invert all colors?
+
+       <B>-mag</B> <I>integer</I>
+              Magnification factor.
+
+       <B>-term</B> <I>string</I>
+              How to plot points.
+
+
+</PRE>
+<H4>MISCELLANY</H4><PRE>
+       All  pattern files must be in the PBM file format. You can
+
+       request that multiple patterns be stored into the  weights
+       by using the -pfile option multiple time.
+
+       The dimensions of the stored patterns and the test pattern
+       must be identical.
+
+       For weight pruning, the program first checks to see  if  a
+       weight  is  "non-local" which means that for a weight that
+       connects two neurons either  the  row  indices  or  column
+       indices differ by the amount greater than the value speci-
+       fied by the -local option.  (If a value for  local  -local
+       is  zero,  then  all weights are used.)  Next, the program
+       prunes weights that are too small in size as specified  by
+       the  -cut  option.   If  a weights has not been removed at
+       this stage, then it will still be pruned with  probability
+       as specified by the -pprob option.
+
+
+</PRE>
+<H4>BUGS</H4><PRE>
+       No  sanity  checks  are performed to make sure that any of
+       the options make sense.
+
+
+</PRE>
+<H4>AUTHOR</H4><PRE>
+       Copyright (c) 1997, Gary William Flake.
+
+       Permission granted for any use according to  the  standard
+       GNU ``copyleft'' agreement provided that the author's com-
+       ments are neither modified nor removed.   No  warranty  is
+       given or implied.
+
+</PRE>
+<HR>
+<ADDRESS>
+Man(1) output converted with
+<a href="http://www.oac.uci.edu/indiv/ehood/man2html.html">man2html</a>
+</ADDRESS>
+</BODY>
+</HTML>

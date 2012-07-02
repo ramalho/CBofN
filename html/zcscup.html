@@ -1,0 +1,149 @@
+<HTML>
+<BODY>
+<PRE>
+<!-- Manpage converted by man2html 3.0.1 -->
+
+
+</PRE>
+<H4>NAME</H4><PRE>
+       zcscup - run a zeroth level classifier system on the cups
+              problem
+
+
+</PRE>
+<H4>SYNOPSIS</H4><PRE>
+       <B>zcscup</B> <B>-help</B>
+         or
+       <B>zcscup</B> <B>[-specs</B>  <I>string</I><B>]</B>  <B>[-steps</B>  <I>integer</I><B>]</B> <B>[-seed</B> <I>integer</I><B>]</B>
+              <B>[-size</B> <I>integer</I><B>]</B>  <B>[-sinit</B>  <I>double</I><B>]</B>  <B>[-lrate</B>  <I>double</I><B>]</B>
+              <B>[-drate</B>  <I>double</I><B>]</B>  <B>[-trate</B>  <I>double</I><B>]</B>  <B>[-crate</B> <I>double</I><B>]</B>
+              <B>[-mrate</B> <I>double</I><B>]</B>  <B>[-grate</B>  <I>double</I><B>]</B>  <B>[-cover</B>  <I>double</I><B>]</B>
+              <B>[-wild</B> <I>double</I><B>]</B> <B>[-avelen</B> <I>integer</I><B>]</B> <B>[-inv]</B> <B>[-mag</B> <I>inte-</I>
+              <I>ger</I><B>]</B> <B>[-term</B> <I>string</I><B>]</B>
+
+
+</PRE>
+<H4>DESCRIPTION</H4><PRE>
+       Train a zeroth level classifier system (ZCS) to solve  the
+       cups  problem  with  the implicit bucket brigade algorithm
+       and a genetic algorithm.  Solving  this  problem  requires
+       the  ZCS to learn to remember important features from pre-
+       vious states, which makes this problem  very  challenging.
+       The  ZCS  always  starts  in the same initial position. It
+       interacts with its environment until it finds  both  cups,
+       which  (only  at that point) yields a reward.  The simula-
+       tion then restarts with the ZCS  placed  at  the  original
+       location.   The  progress of the ZCS is continuously plot-
+       ted, while the statistics on the time to  find  both  cups
+       are  calculated  and displayed.  At the end of the simula-
+       tion the classifiers that make up the final ZCS are  saved
+       to a log file.
+
+
+</PRE>
+<H4>OPTIONS</H4><PRE>
+       <B>-specs</B> <I>string</I>
+              World specification file.
+
+       <B>-steps</B> <I>integer</I>
+              Number of simulated trials.
+
+       <B>-seed</B> <I>integer</I>
+              Random seed for initial state.
+
+       <B>-size</B> <I>integer</I>
+              Population size.
+
+       <B>-sinit</B> <I>double</I>
+              Initial classifier strength.
+
+       <B>-lrate</B> <I>double</I>
+              BB learning rate.
+
+       <B>-drate</B> <I>double</I>
+              BB discount rate.
+
+       <B>-trate</B> <I>double</I>
+              Tax rate for strength reduce.
+
+       <B>-crate</B> <I>double</I>
+              GA crossover rate.
+
+       <B>-mrate</B> <I>double</I>
+              GA mutation rate.
+
+       <B>-grate</B> <I>double</I>
+              GA invocation rate.
+
+       <B>-cover</B> <I>double</I>
+              Covering factor.
+
+       <B>-wild</B> <I>double</I>
+              Probability of # in cover.
+
+       <B>-avelen</B> <I>integer</I>
+              Length of windowed average.
+
+       <B>-inv</B>   Invert all colors?
+
+       <B>-mag</B> <I>integer</I>
+              Magnification factor.
+
+       <B>-term</B> <I>string</I>
+              How to plot points.
+
+
+</PRE>
+<H4>MISCELLANY</H4><PRE>
+       The  file format for the specifications files must contain
+       the width and height of the world followed by the  details
+       of  the world in ASCII format, where '.' is an empty cell,
+       'O' is a wall, and 'F' represent a cup.  See  any  of  the
+       examples  in  the 'data' subdirectory of this distribution
+       for more details.
+
+       The log file, 'zcscup.log', contains one line per  classi-
+       fier with the condition string, the action string, and the
+       strength of the classifier.  The classifiers are sorted so
+       the the strongest classifiers are printed first.
+
+       The  ASCII  output  of  the program shows the most recent,
+       windowed average and the total average for the  number  of
+       steps needed to find both cups.
+
+
+</PRE>
+<H4>HINTS</H4><PRE>
+       See  the  author's  book,  "The  Computational  Beauty  of
+       Nature," for more details.
+
+
+</PRE>
+<H4>BUGS</H4><PRE>
+       The simulation always restarts with the  ZCS  location  at
+       position  (0,  4),  which  really only makes sense for the
+       data file to work around this or tweak the source code  to
+       try a different problem variation.
+
+       No  sanity  checks  are performed to make sure that any of
+
+       the options make sense.
+
+
+</PRE>
+<H4>AUTHOR</H4><PRE>
+       Copyright (c) 1997, Gary William Flake.
+
+       Permission granted for any use according to  the  standard
+       GNU ``copyleft'' agreement provided that the author's com-
+       ments are neither modified nor removed.   No  warranty  is
+       given or implied.
+
+</PRE>
+<HR>
+<ADDRESS>
+Man(1) output converted with
+<a href="http://www.oac.uci.edu/indiv/ehood/man2html.html">man2html</a>
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,139 @@
+.TH BOIDS 1
+.SH NAME
+.PD 0
+.TP
+boids \- simulate a flock of android birds from Brooklyn
+.PD 1
+.SH SYNOPSIS
+.PD 0
+.TP
+.B boids \fB-help
+.LP
+\ \ or
+.TP
+.B boids
+\fB[\-width \fIinteger\fP]
+[\-height \fIinteger\fP]
+[\-num \fIinteger\fP]
+[\-steps \fIinteger\fP]
+[\-seed \fIinteger\fP]
+[\-angle \fIdouble\fP]
+[\-vangle \fIdouble\fP]
+[\-rcopy \fIdouble\fP]
+[\-rcent \fIdouble\fP]
+[\-rvoid \fIdouble\fP]
+[\-rviso \fIdouble\fP]
+[\-wcopy \fIdouble\fP]
+[\-wcent \fIdouble\fP]
+[\-wvoid \fIdouble\fP]
+[\-wviso \fIdouble\fP]
+[\-wrand \fIdouble\fP]
+[\-dt \fIdouble\fP]
+[\-ddt \fIdouble\fP]
+[\-minv \fIdouble\fP]
+[\-len \fIinteger\fP]
+[\-psdump]
+[\-inv]
+[\-mag \fIinteger\fP]
+[\-term \fIstring\fP]
+.PD 1
+.SH DESCRIPTION
+Simulate a flock of boids according to rules that determine their 
+individual behaviors as well as the ``physics'' of their universe. 
+A boid greedily attempts to apply four rules with respect to its 
+neighbors: it wants to fly in the same direction, be in the center 
+of the local cluster of boids, avoid collisions with boids too close, 
+and maintain a clear view ahead by skirting around others that block 
+its view.  Changing these rules can make the boids behave like birds, 
+gnats, bees, fish, or magnetic particles.  See the RULES section of 
+the manual pages for more details.
+.SH OPTIONS
+.IP \fB\-width\ \fIinteger\fP
+Width of the plot in pixels.
+.IP \fB\-height\ \fIinteger\fP
+Height of the plot in pixels.
+.IP \fB\-num\ \fIinteger\fP
+Number of boids.
+.IP \fB\-steps\ \fIinteger\fP
+Number of simulated steps.
+.IP \fB\-seed\ \fIinteger\fP
+Random seed for initial state.
+.IP \fB\-angle\ \fIdouble\fP
+Number of viewing degrees.
+.IP \fB\-vangle\ \fIdouble\fP
+Visual avoidance angle.
+.IP \fB\-rcopy\ \fIdouble\fP
+Radius for copy vector.
+.IP \fB\-rcent\ \fIdouble\fP
+Radius for centroid vector.
+.IP \fB\-rvoid\ \fIdouble\fP
+Radius for avoidance vector.
+.IP \fB\-rviso\ \fIdouble\fP
+Radius for visual avoidance vector.
+.IP \fB\-wcopy\ \fIdouble\fP
+Weight for copy vector.
+.IP \fB\-wcent\ \fIdouble\fP
+Weight for centroid vector.
+.IP \fB\-wvoid\ \fIdouble\fP
+Weight for avoidance vector.
+.IP \fB\-wviso\ \fIdouble\fP
+Weight for visual avoidance vector.
+.IP \fB\-wrand\ \fIdouble\fP
+Weight for random vector.
+.IP \fB\-dt\ \fIdouble\fP
+Time-step increment.
+.IP \fB\-ddt\ \fIdouble\fP
+Momentum factor (0 < ddt < 1).
+.IP \fB\-minv\ \fIdouble\fP
+Minimum velocity.
+.IP \fB\-len\ \fIinteger\fP
+Tail length.
+.IP \fB\-psdump
+Dump PS at the very end?
+.IP \fB\-inv
+Invert all colors?
+.IP \fB\-mag\ \fIinteger\fP
+Magnification factor.
+.IP \fB\-term\ \fIstring\fP
+How to plot points.
+.SH RULES
+All of the rules have a weight option and a radius option.
+The radius option specifies how close a boid need to be to
+another in order for the rule to be acted upon.  The weight
+is used when combining all of the rules actions into a single
+new velocity vector.
+
+The four rules can be simply described as follows:
+
+   Centering: move towards the center of any boids in my
+              viewing area.
+
+   Copying: attempt to move in the average direction of
+            that all boids that can be seen are moving
+            in.
+
+   Avoidance: ``Please don't stand so close to me.''
+                Move away from any close flyers.
+
+   Visual: move in such a way that the bonehead
+           obstructing your view no longer interferes.
+
+The four rules are then normalized and added together to make
+the next velocity vector of the boid.  All radii in the rules
+are in terms of pixels.
+
+You may wish to try turning on and off different combinations
+of the rules to see how the boids' behaviors change.  For example,
+if you turn off the avoidance rule, increase the centering radius
+and weight, and increase the viewing angle to nearly 360 degrees,
+then the boids will behave like a pack of wolves fighting over
+the center.  Other changes can yield similar surprises.
+.SH BUGS
+No sanity checks are performed to make sure that any of the
+options make sense.
+.SH AUTHOR
+Copyright (c) 1997, Gary William Flake.
+
+Permission granted for any use according to the standard GNU
+``copyleft'' agreement provided that the author's comments are
+neither modified nor removed.  No warranty is given or implied.

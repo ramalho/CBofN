@@ -1,0 +1,62 @@
+.TH PREDPREY 1
+.SH NAME
+.PD 0
+.TP
+predprey \- integrate the Lotka\-Volterra system
+.PD 1
+.SH SYNOPSIS
+.PD 0
+.TP
+.B predprey \fB-help
+.LP
+\ \ or
+.TP
+.B predprey
+\fB[\-seed \fIinteger\fP]
+[\-points \fIinteger\fP]
+[\-f0 \fIdouble\fP]
+[\-s0 \fIdouble\fP]
+[\-a \fIdouble\fP]
+[\-b \fIdouble\fP]
+[\-c \fIdouble\fP]
+[\-d \fIdouble\fP]
+[\-dt \fIdouble\fP]
+.PD 1
+.SH DESCRIPTION
+Integrates the two-species Lotka-Volterra predator-prey system, 
+
+dF/dt = F(a - bS), dS/dt = S(cF - d), 
+
+according to the specified parameters.
+.SH OPTIONS
+.IP \fB\-seed\ \fIinteger\fP
+Seed for random parameters.
+.IP \fB\-points\ \fIinteger\fP
+Number of points to produce.
+.IP \fB\-f0\ \fIdouble\fP
+Initial fish population.
+.IP \fB\-s0\ \fIdouble\fP
+Initial shark population.
+.IP \fB\-a\ \fIdouble\fP
+Fish growth rate.
+.IP \fB\-b\ \fIdouble\fP
+Shark consumption rate.
+.IP \fB\-c\ \fIdouble\fP
+Fish nutritional value.
+.IP \fB\-d\ \fIdouble\fP
+Shark death rate.
+.IP \fB\-dt\ \fIdouble\fP
+Time step increment.
+.SH MISCELLANY
+The program uses a second-order Euler's method to perform the
+numerical integration, which is sufficient for simple tasks such
+as this.
+.SH BUGS
+No sanity checks are performed to make sure that any of the
+options make sense.
+.SH AUTHOR
+Copyright (c) 1997, Gary William Flake.
+
+Permission granted for any use according to the standard GNU
+``copyleft'' agreement provided that the author's comments are
+neither modified nor removed.  No warranty is given or implied.

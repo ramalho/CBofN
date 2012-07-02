@@ -1,0 +1,93 @@
+<HTML>
+<BODY>
+<PRE>
+<!-- Manpage converted by man2html 3.0.1 -->
+
+
+</PRE>
+<H4>NAME</H4><PRE>
+       gastring - breed strings with a genetic algorithm
+
+
+</PRE>
+<H4>SYNOPSIS</H4><PRE>
+       <B>gastring</B> <B>-help</B>
+         or
+       <B>gastring</B>
+              <B>[-target</B>  <I>string</I><B>]</B>  <B>[-size</B> <I>integer</I><B>]</B> <B>[-steps</B> <I>integer</I><B>]</B>
+              <B>[-seed</B> <I>integer</I><B>]</B>  <B>[-crate</B>  <I>double</I><B>]</B>  <B>[-mrate</B>  <I>double</I><B>]</B>
+              <B>[-pbase</B> <I>double</I><B>]</B>
+
+
+</PRE>
+<H4>DESCRIPTION</H4><PRE>
+       Use  a  genetic  algorithm  to  breed strings that match a
+       user-specified target string.   This  program  illustrates
+       how GAs can perform a type of stochastic search in a space
+       of discrete  objects.   Reproduction  of  strings  entails
+       crossover  and  mutation with strings being selected based
+       on fitness.
+
+
+</PRE>
+<H4>OPTIONS</H4><PRE>
+       <B>-target</B> <I>string</I>
+              Target string.
+
+       <B>-size</B> <I>integer</I>
+              Population size.
+
+       <B>-steps</B> <I>integer</I>
+              Number of generations.
+
+       <B>-seed</B> <I>integer</I>
+              Random seed.
+
+       <B>-crate</B> <I>double</I>
+              Crossover rate.
+
+       <B>-mrate</B> <I>double</I>
+              Mutation rate.
+
+       <B>-pbase</B> <I>double</I>
+              Power base for fitness.
+
+
+</PRE>
+<H4>MISCELLANY</H4><PRE>
+       The fitness function works in  three  steps.   First,  the
+       number  of  correct  characters is tallied and denoted the
+       raw fitness.  The scaled fitness is then set to pow(PBASE,
+       raw fitness - string len).  The normalized fitness is then
+       set to the scaled fitness divided by the sum of the scaled
+       fitnesses.   Thus the sum of the normalized fitnesses must
+       be equal to one while a string with one letter  more  cor-
+       rect  than  another  string  is  PBASE  times as likely to
+       reproduce, where PBASE is  the  value  supplied  with  the
+       -pbase option.
+
+
+
+</PRE>
+<H4>BUGS</H4><PRE>
+       No  sanity  checks  are performed to make sure that any of
+       the options make sense.
+
+
+</PRE>
+<H4>AUTHOR</H4><PRE>
+       Copyright (c) 1997, Gary William Flake.
+
+       Permission granted for any use according to  the  standard
+       GNU ``copyleft'' agreement provided that the author's com-
+       ments are neither modified nor removed.   No  warranty  is
+       given or implied.
+
+</PRE>
+<HR>
+<ADDRESS>
+Man(1) output converted with
+<a href="http://www.oac.uci.edu/indiv/ehood/man2html.html">man2html</a>
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,99 @@
+.TH BIFUR1D 1
+.SH NAME
+.PD 0
+.TP
+bifur1d \- plot bifurcations from a one\-dimensional map
+.PD 1
+.SH SYNOPSIS
+.PD 0
+.TP
+.B bifur1d \fB-help
+.LP
+\ \ or
+.TP
+.B bifur1d
+\fB[\-width \fIinteger\fP]
+[\-height \fIinteger\fP]
+[\-skip \fIinteger\fP]
+[\-rmin \fIdouble\fP]
+[\-rmax \fIdouble\fP]
+[\-func \fIstring\fP]
+[\-factor \fIdouble\fP]
+[\-ymin \fIdouble\fP]
+[\-ymax \fIdouble\fP]
+[\-aux \fIdouble\fP]
+[\-box \fIinteger\fP]
+[\-brmin \fIdouble\fP]
+[\-brmax \fIdouble\fP]
+[\-bymin \fIdouble\fP]
+[\-bymax \fIdouble\fP]
+[\-inv]
+[\-mag \fIinteger\fP]
+[\-term \fIstring\fP]
+.PD 1
+.SH DESCRIPTION
+A bifurcation diagram is plotted for a one-dimensional map 
+according to the specified options.  In general, the map is iterated 
+for several different values of the 'r' parameter so that the long 
+term behavior of the map can be observed as a function of 
+'r'.  See the MAPS section of the manual page for details of what maps 
+are supported.  User defined maps can be added to the file maps1d.c, 
+but you must recompile the program. 
+.SH OPTIONS
+.IP \fB\-width\ \fIinteger\fP
+Width of the plot in pixels.
+.IP \fB\-height\ \fIinteger\fP
+Height of the plot in pixels.
+.IP \fB\-skip\ \fIinteger\fP
+Number of initial points to skip.
+.IP \fB\-rmin\ \fIdouble\fP
+Smallest value for r.
+.IP \fB\-rmax\ \fIdouble\fP
+Largest value for r.
+.IP \fB\-func\ \fIstring\fP
+Map function to use (one of 'log', 'tent', 'sin', or 'gauss').
+.IP \fB\-factor\ \fIdouble\fP
+Multiplicative factor for number of iterates.
+.IP \fB\-ymin\ \fIdouble\fP
+Smallest value for y range.
+.IP \fB\-ymax\ \fIdouble\fP
+Largest value for y range.
+.IP \fB\-aux\ \fIdouble\fP
+Auxiliary map parameter.
+.IP \fB\-box\ \fIinteger\fP
+Line width for a box.
+.IP \fB\-brmin\ \fIdouble\fP
+Smallest r-value for the box.
+.IP \fB\-brmax\ \fIdouble\fP
+Largest r-value for the box.
+.IP \fB\-bymin\ \fIdouble\fP
+Smallest value for box y range.
+.IP \fB\-bymax\ \fIdouble\fP
+Largest value for box y range.
+.IP \fB\-inv
+Invert all colors?
+.IP \fB\-mag\ \fIinteger\fP
+Magnification factor.
+.IP \fB\-term\ \fIstring\fP
+How to plot points.
+.SH MAPS
+The following four one-dimensional maps are allowed:
+.IP Logistic\ Map:
+x(t+1) = 4 * r * x(t) * (1.0 - x(t))
+.IP Tent\ Map:
+x(t+1) = (x(t) <= 0.5) ? 2 * r * x(t) : 2r * (1.0 - x(t))
+.IP Sine\ Map:
+x(t+1) = sin(x(t) * PI * aux * 2 * r) / 2 + 0.5
+.IP Gaussian\ Map:
+x(t+1) = r * exp(-aux * (x(t) - 0.5) * (x(t) - 0.5))
+.LP
+See the file "maps1d.c" to see how to add user-defined maps.
+.SH BUGS
+No sanity checks are performed to make sure that any of the
+options make sense.
+.SH AUTHOR
+Copyright (c) 1997, Gary William Flake.
+
+Permission granted for any use according to the standard GNU
+``copyleft'' agreement provided that the author's comments are
+neither modified nor removed.  No warranty is given or implied.

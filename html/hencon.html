@@ -1,0 +1,91 @@
+<HTML>
+<BODY>
+<PRE>
+<!-- Manpage converted by man2html 3.0.1 -->
+
+
+</PRE>
+<H4>NAME</H4><PRE>
+       hencon - control the Henon system with the OGY control law
+
+
+</PRE>
+<H4>SYNOPSIS</H4><PRE>
+       <B>hencon</B> <B>-help</B>
+         or
+       <B>hencon</B> <B>[-points</B> <I>integer</I><B>]</B>  <B>[-on1</B>  <I>integer</I><B>]</B>  <B>[-off</B>  <I>integer</I><B>]</B>
+              <B>[-on2</B>  <I>integer</I><B>]</B>  <B>[-skip</B>  <I>integer</I><B>]</B>  <B>[-seed</B>  <I>integer</I><B>]</B>
+              <B>[-plimit</B> <I>double</I><B>]</B> <B>[-A</B> <I>double</I><B>]</B>  <B>[-B</B>  <I>double</I><B>]</B>  <B>[-gauss</B>
+              <I>double</I><B>]</B>
+
+
+</PRE>
+<H4>DESCRIPTION</H4><PRE>
+       Control  the Henon system, x(t+1) = A - x(t)^2 + B * x(t -
+       1), with the OGY control law for arbitrary  choices  of  A
+       and  B.   The control law is analytically calculated based
+       on the system parameters.  The user can  select  times  in
+       which control is turned on and off so that time-to-control
+       and transients can be observed.  Gaussian noise  can  also
+       be  injected  into the system.  The control timing options
+       are constrained to obey  (0  &lt;=  on1  &lt;=  off  &lt;=  on2  &lt;=
+       points).
+
+
+</PRE>
+<H4>OPTIONS</H4><PRE>
+       <B>-points</B> <I>integer</I>
+              The length of the time series.
+
+       <B>-on1</B> <I>integer</I>
+              Where to turn control on.
+
+       <B>-off</B> <I>integer</I>
+              Where to turn control off.
+
+       <B>-on2</B> <I>integer</I>
+              Where to turn control on again.
+
+       <B>-skip</B> <I>integer</I>
+              Amount to skip initially.
+
+       <B>-seed</B> <I>integer</I>
+              Random seed.
+
+       <B>-plimit</B> <I>double</I>
+              Largest allowed size for p.
+
+       <B>-A</B> <I>double</I>
+              Value of the A parameter.
+
+       <B>-B</B> <I>double</I>
+              Value of the B parameter.
+
+       <B>-gauss</B> <I>double</I>
+              Magnitude of Gaussian noise.
+
+
+
+</PRE>
+<H4>BUGS</H4><PRE>
+       Few  sanity  checks are performed to make sure that any of
+       the options make sense.
+
+
+</PRE>
+<H4>AUTHOR</H4><PRE>
+       Copyright (c) 1997, Gary William Flake.
+
+       Permission granted for any use according to  the  standard
+       GNU ``copyleft'' agreement provided that the author's com-
+       ments are neither modified nor removed.   No  warranty  is
+       given or implied.
+
+</PRE>
+<HR>
+<ADDRESS>
+Man(1) output converted with
+<a href="http://www.oac.uci.edu/indiv/ehood/man2html.html">man2html</a>
+</ADDRESS>
+</BODY>
+</HTML>

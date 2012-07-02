@@ -1,0 +1,63 @@
+.TH HENCON 1
+.SH NAME
+.PD 0
+.TP
+hencon \- control the Henon system with the OGY control law
+.PD 1
+.SH SYNOPSIS
+.PD 0
+.TP
+.B hencon \fB-help
+.LP
+\ \ or
+.TP
+.B hencon
+\fB[\-points \fIinteger\fP]
+[\-on1 \fIinteger\fP]
+[\-off \fIinteger\fP]
+[\-on2 \fIinteger\fP]
+[\-skip \fIinteger\fP]
+[\-seed \fIinteger\fP]
+[\-plimit \fIdouble\fP]
+[\-A \fIdouble\fP]
+[\-B \fIdouble\fP]
+[\-gauss \fIdouble\fP]
+.PD 1
+.SH DESCRIPTION
+Control the Henon system, x(t+1) = A - x(t)^2 + B * x(t - 1), 
+with the OGY control law for arbitrary choices of A and B.  The 
+control law is analytically calculated based on the system parameters. 
+The user can select times in which control is turned on and off so that 
+time-to-control and transients can be observed.  Gaussian noise can 
+also be injected into the system.  The control timing options are 
+constrained to obey (0 <= on1 <= off <= on2 <= points).
+.SH OPTIONS
+.IP \fB\-points\ \fIinteger\fP
+The length of the time series.
+.IP \fB\-on1\ \fIinteger\fP
+Where to turn control on.
+.IP \fB\-off\ \fIinteger\fP
+Where to turn control off.
+.IP \fB\-on2\ \fIinteger\fP
+Where to turn control on again.
+.IP \fB\-skip\ \fIinteger\fP
+Amount to skip initially.
+.IP \fB\-seed\ \fIinteger\fP
+Random seed.
+.IP \fB\-plimit\ \fIdouble\fP
+Largest allowed size for p.
+.IP \fB\-A\ \fIdouble\fP
+Value of the A parameter.
+.IP \fB\-B\ \fIdouble\fP
+Value of the B parameter.
+.IP \fB\-gauss\ \fIdouble\fP
+Magnitude of Gaussian noise.
+.SH BUGS
+Few sanity checks are performed to make sure that any of the
+options make sense.
+.SH AUTHOR
+Copyright (c) 1997, Gary William Flake.
+
+Permission granted for any use according to the standard GNU
+``copyleft'' agreement provided that the author's comments are
+neither modified nor removed.  No warranty is given or implied.

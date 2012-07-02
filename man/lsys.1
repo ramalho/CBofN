@@ -1,0 +1,118 @@
+.TH LSYS 1
+.SH NAME
+.PD 0
+.TP
+lsys \- builds an L\-system fractal from multiple rules
+.PD 1
+.SH SYNOPSIS
+.PD 0
+.TP
+.B lsys \fB-help
+.LP
+\ \ or
+.TP
+.B lsys
+\fB[\-width \fIinteger\fP]
+[\-height \fIinteger\fP]
+[\-border \fIinteger\fP]
+[\-depth \fIinteger\fP]
+[\-a0 \fIdouble\fP]
+[\-da \fIdouble\fP]
+[\-ds \fIdouble\fP]
+[\-unoise \fIdouble\fP]
+[\-rule \fI\.\.\.\fP ]
+[\-axiom \fIstring\fP]
+[\-inv]
+[\-mag \fIinteger\fP]
+[\-term \fIstring\fP]
+.PD 1
+.SH DESCRIPTION
+An L-system is computed according to the specified axiom, rules, 
+and step angle.  The L-system axiom is recursively expanded for the 
+specified depth, with 'F', 'G', and '|' actions resulting in movement 
+of the virtual plotter, and '+' and '-' commands resulting in rotation 
+of the virtual plotter.  See the RULES section of the manual page for 
+more information on the format for legal rules. 
+.SH OPTIONS
+.IP \fB\-width\ \fIinteger\fP
+Width of the plot in pixels.
+.IP \fB\-height\ \fIinteger\fP
+Height of the plot in pixels.
+.IP \fB\-border\ \fIinteger\fP
+Approximate number of border pixels.
+.IP \fB\-depth\ \fIinteger\fP
+Recursion depth to use.
+.IP \fB\-a0\ \fIdouble\fP
+Initial angle.
+.IP \fB\-da\ \fIdouble\fP
+Delta angle for '+' and '-' commands.
+.IP \fB\-ds\ \fIdouble\fP
+Delta step size.  Only affects '|' commands and should be less than 1.
+.IP \fB\-unoise\ \fIdouble\fP
+Amount of uniform noise to add to step angle.
+.IP \fB\-rule\ \fI\.\.\.\fP 
+Specify a production rule.  See RULES section of manual page.
+.IP \fB\-axiom\ \fIstring\fP
+Starting axiom.
+.IP \fB\-inv
+Invert all colors?
+.IP \fB\-mag\ \fIinteger\fP
+Magnification factor.
+.IP \fB\-term\ \fIstring\fP
+How to plot points.
+.SH RULES
+The L-system rules should always take the form "x=..." where
+"x" is a letter and the remaining portion is a sequence of
+turtle graphics commands, which operate as described below.
+
+\'F\' is the draw forward command, which moves the plotter
+forward by a fixed length, drawing a line from the old
+position to the new position.
+
+\'G\' (Go Forward) is similar to \'F\', but only moves the
+plotter and does not draw a line.
+
+\'+\' and \'-\' turn the plotter to the right (or left) by a
+fixed angle determined by the -da switch.  If an integer
+precedes the \'+\' or \'-\' symbol, then the plotter
+effectively makes that number of right-hand turns.
+
+\'[\' saves the current position and angle of the plotter
+for later use, which is restored by the \']\' command.
+
+\'|\' move the turtle forward by a length computed from
+the execution depth, drawing a line from the old position
+to the new.  Thus, this command is similar to \'F\' but it
+is not recursively expanded.  If DS is the value supplied
+by the \fB-ds\fP switch, then the step size will be proportional
+to DS^depth.  This allows for certain types of figures to
+be drawn that would otherwise be difficult to express
+without this command.
+.SH EXAMPLES
+.IP A\ weed:
+\fBlsys -da 20 -rule "F=|[-F]|[+F][-F]F"\fP
+.IP Kock\ curve:
+\fBlsys -da 60 -rule F=F-F++F-F\fP
+.IP Penrose\ Snowflake:
+\fBlsys -da 18 -axiom F4-F4-F4-F4-F -rule F=F4-F4-F10-F++F4-F\fP
+.IP Sierpinski\ Arrowhead:
+\fBlsys -da 60 -rule "F=[-G+++F][-G+F][GG--F]" -rule G=GG\fP
+.LP
+See the author's book, "The Computational Beauty of Nature," for
+more examples.
+.SH MISCELLANY
+If you are using a UNIX command shell, be sure to quote any rules
+with brackets so that the shell passes them to the program correctly.
+.SH BUGS
+No sanity checks are performed to make sure that any of the
+options make sense.
+
+The border size is only approximately calculated because the
+author felt a bit lazy at the time of writing this program.
+However, it's pretty close for most values.
+.SH AUTHOR
+Copyright (c) 1997, Gary William Flake.
+
+Permission granted for any use according to the standard GNU
+``copyleft'' agreement provided that the author's comments are
+neither modified nor removed.  No warranty is given or implied.

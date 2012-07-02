@@ -1,0 +1,132 @@
+<HTML>
+<BODY>
+<PRE>
+<!-- Manpage converted by man2html 3.0.1 -->
+
+
+</PRE>
+<H4>NAME</H4><PRE>
+       predprey - plot the phase space of a predator-prey system
+
+
+</PRE>
+<H4>SYNOPSIS</H4><PRE>
+       <B>predprey</B> <B>-help</B>
+         or
+       <B>predprey</B>
+              <B>[-width</B>  <I>integer</I><B>]</B> <B>[-height</B> <I>integer</I><B>]</B> <B>[-skip</B> <I>integer</I><B>]</B>
+              <B>[-points</B> <I>integer</I><B>]</B> <B>[-alpha</B> <I>double</I><B>]</B> <B>[-delta</B>  <I>integer</I><B>]</B>
+              <B>[-dt</B> <I>double</I><B>]</B> <B>[-x0</B> <I>double</I><B>]</B> <B>[-y0</B> <I>double</I><B>]</B> <B>[-z0</B> <I>double</I><B>]</B>
+              <B>[-data]</B> <B>[-xp</B> <I>string</I><B>]</B> <B>[-yp</B> <I>string</I><B>]</B> <B>[-factor</B>  <I>double</I><B>]</B>
+              <B>[-inv]</B> <B>[-mag</B> <I>integer</I><B>]</B> <B>[-term</B> <I>string</I><B>]</B>
+
+
+</PRE>
+<H4>DESCRIPTION</H4><PRE>
+       The  phase  space of a three species predator-prey system,
+       which is described by the three differential equations
+
+       dx/dt = x * (1.1 - x / 2 - y / 2 - z / 10),
+
+       dy/dt = y * (-0.5 + x / 2 + y / 10 - z / 10), and
+
+       dz/dt = z * (alpha + 0.2 - alpha * x - y / 10 - z / 10),
+
+       is plotted according to the specified  parameters.   Valid
+       arguments  passed  with the -xp and -yp options can be any
+       one of x(t), y(t), z(t), x(t-delta), y(t-delta),  or  z(t-
+       delta).   Thus,  the displayed plot can take the form of a
+       state space plot or a delayed coordinate plot.
+
+
+</PRE>
+<H4>OPTIONS</H4><PRE>
+       <B>-width</B> <I>integer</I>
+              Width of the plot in pixels.
+
+       <B>-height</B> <I>integer</I>
+              Height of the plot in pixels.
+
+       <B>-skip</B> <I>integer</I>
+              Number of initial points to skip.
+
+       <B>-points</B> <I>integer</I>
+              Number of points to plot.
+
+       <B>-alpha</B> <I>double</I>
+              Value of the alpha parameter.
+
+       <B>-delta</B> <I>integer</I>
+              Time delay term.
+
+       <B>-dt</B> <I>double</I>
+              Time step.
+
+       <B>-x0</B> <I>double</I>
+              Initial X value.
+
+
+       <B>-y0</B> <I>double</I>
+              Initial Y value.
+
+       <B>-z0</B> <I>double</I>
+              Initial Z value.
+
+       <B>-data</B>  Don't plot, but print points.
+
+       <B>-xp</B> <I>string</I>
+              X-coordinate for plot.
+
+       <B>-yp</B> <I>string</I>
+              Y-coordinate for plot.
+
+       <B>-factor</B> <I>double</I>
+              Auto-scale expansion factor.
+
+       <B>-inv</B>   Invert all colors?
+
+       <B>-mag</B> <I>integer</I>
+              Magnification factor.
+
+       <B>-term</B> <I>string</I>
+              How to plot points.
+
+
+</PRE>
+<H4>MISCELLANY</H4><PRE>
+       The plot region is determined by the points that are  ini-
+       tially  skipped.  If this number is too small (i.e., it is
+       not very representative of the range of the  plotted  val-
+       ues),  then  you may need to increase the number specified
+       by the -skip option.  Alternatively, you  can  adjust  the
+       value   given   to   -factor,  which  simply  fractionally
+       increases the border of the plot.
+
+       The program uses a second-order Euler's method to  perform
+       the  numerical integration, which is sufficient for simple
+       tasks such as this.
+
+
+</PRE>
+<H4>BUGS</H4><PRE>
+       No sanity checks are performed to make sure  that  any  of
+       the options make sense.
+
+
+</PRE>
+<H4>AUTHOR</H4><PRE>
+       Copyright (c) 1997, Gary William Flake.
+
+       Permission  granted  for any use according to the standard
+       GNU ``copyleft'' agreement provided that the author's com-
+       ments  are  neither  modified nor removed.  No warranty is
+       given or implied.
+
+</PRE>
+<HR>
+<ADDRESS>
+Man(1) output converted with
+<a href="http://www.oac.uci.edu/indiv/ehood/man2html.html">man2html</a>
+</ADDRESS>
+</BODY>
+</HTML>

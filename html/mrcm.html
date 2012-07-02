@@ -1,0 +1,101 @@
+<HTML>
+<BODY>
+<PRE>
+<!-- Manpage converted by man2html 3.0.1 -->
+
+
+</PRE>
+<H4>NAME</H4><PRE>
+       mrcm - generate fractals with the MRCM algorithm
+
+
+</PRE>
+<H4>SYNOPSIS</H4><PRE>
+       <B>mrcm</B> <B>-help</B>
+         or
+       <B>mrcm</B>   <B>[-infile</B> <I>string</I><B>]</B> <B>[-width</B> <I>integer</I><B>]</B> <B>[-height</B> <I>integer</I><B>]</B>
+              <B>[-depth</B> <I>integer</I><B>]</B>  <B>[-border</B>  <I>integer</I><B>]</B>  <B>[-bw</B>  <I>double</I><B>]</B>
+              <B>[-bh</B> <I>double</I><B>]</B> <B>[-L]</B> <B>[-term</B> <I>string</I><B>]</B> <B>[-inv]</B> <B>[-mag</B> <I>inte-</I>
+              <I>ger</I><B>]</B>
+
+
+</PRE>
+<H4>DESCRIPTION</H4><PRE>
+       An affine fractal is computed via the  Multiple  Reduction
+       Copy Machine Algorithm.  The rules must be supplied from a
+       file with each line consisting of six  values  (A-F)  such
+       that the values of A-D describe a 2x2 matrix (A, B; C, D),
+       while E and F describes a 2x1 column vector (E; F).
+
+
+</PRE>
+<H4>OPTIONS</H4><PRE>
+       <B>-infile</B> <I>string</I>
+              Data input file.
+
+       <B>-width</B> <I>integer</I>
+              Width of the plot in pixels.
+
+       <B>-height</B> <I>integer</I>
+              Height of the plot in pixels.
+
+       <B>-depth</B> <I>integer</I>
+              Depth of recursive calls.
+
+       <B>-border</B> <I>integer</I>
+              Number of pixels in border.
+
+       <B>-bw</B> <I>double</I>
+              Width of the seed box.
+
+       <B>-bh</B> <I>double</I>
+              Height of the seed box.
+
+       <B>-L</B>     Draw an 'L' in each box?
+
+       <B>-term</B> <I>string</I>
+              How to plot points.
+
+       <B>-inv</B>   Invert colors?
+
+       <B>-mag</B> <I>integer</I>
+              Magnification factor.
+
+
+</PRE>
+<H4>MISCELLANY</H4><PRE>
+       There is a shell script called 'ifscma' supplied with  the
+       source code that has a simple interface that allows you to
+       reference sets of predefined rules by name.  You may  also
+
+       wish  to  see the author's book, "The Computational Beauty
+       of Nature," for some more examples.
+
+
+</PRE>
+<H4>BUGS</H4><PRE>
+       No sanity checks are performed to make sure  that  any  of
+       the options make sense.
+
+       The  maximum  number  of affine rules is determined by the
+       constant MAXRULES, which you  may  need  to  adjust  under
+       exceptional circumstances.
+
+
+</PRE>
+<H4>AUTHOR</H4><PRE>
+       Copyright (c) 1997, Gary William Flake.
+
+       Permission  granted  for any use according to the standard
+       GNU ``copyleft'' agreement provided that the author's com-
+       ments  are  neither  modified nor removed.  No warranty is
+       given or implied.
+
+</PRE>
+<HR>
+<ADDRESS>
+Man(1) output converted with
+<a href="http://www.oac.uci.edu/indiv/ehood/man2html.html">man2html</a>
+</ADDRESS>
+</BODY>
+</HTML>

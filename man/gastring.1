@@ -1,0 +1,62 @@
+.TH GASTRING 1
+.SH NAME
+.PD 0
+.TP
+gastring \- breed strings with a genetic algorithm
+.PD 1
+.SH SYNOPSIS
+.PD 0
+.TP
+.B gastring \fB-help
+.LP
+\ \ or
+.TP
+.B gastring
+\fB[\-target \fIstring\fP]
+[\-size \fIinteger\fP]
+[\-steps \fIinteger\fP]
+[\-seed \fIinteger\fP]
+[\-crate \fIdouble\fP]
+[\-mrate \fIdouble\fP]
+[\-pbase \fIdouble\fP]
+.PD 1
+.SH DESCRIPTION
+Use a genetic algorithm to breed strings that match a user-specified 
+target string.  This program illustrates how GAs can perform a type of 
+stochastic search in a space of discrete objects.  Reproduction of 
+strings entails crossover and mutation with strings being selected 
+based on fitness.
+.SH OPTIONS
+.IP \fB\-target\ \fIstring\fP
+Target string.
+.IP \fB\-size\ \fIinteger\fP
+Population size.
+.IP \fB\-steps\ \fIinteger\fP
+Number of generations.
+.IP \fB\-seed\ \fIinteger\fP
+Random seed.
+.IP \fB\-crate\ \fIdouble\fP
+Crossover rate.
+.IP \fB\-mrate\ \fIdouble\fP
+Mutation rate.
+.IP \fB\-pbase\ \fIdouble\fP
+Power base for fitness.
+.SH MISCELLANY
+The fitness function works in three steps.  First, the number of
+correct characters is tallied and denoted the raw fitness.  The
+scaled fitness is then set to pow(PBASE, raw fitness - string
+len).  The normalized fitness is then set to the scaled fitness
+divided by the sum of the scaled fitnesses.  Thus the sum of the
+normalized fitnesses must be equal to one while a string with one
+letter more correct than another string is PBASE times as likely
+to reproduce, where PBASE is the value supplied with the -pbase
+option.
+.SH BUGS
+No sanity checks are performed to make sure that any of the
+options make sense.
+.SH AUTHOR
+Copyright (c) 1997, Gary William Flake.
+
+Permission granted for any use according to the standard GNU
+``copyleft'' agreement provided that the author's comments are
+neither modified nor removed.  No warranty is given or implied.

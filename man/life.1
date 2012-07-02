@@ -1,0 +1,65 @@
+.TH LIFE 1
+.SH NAME
+.PD 0
+.TP
+life \- play Conway's Game of Life
+.PD 1
+.SH SYNOPSIS
+.PD 0
+.TP
+.B life \fB-help
+.LP
+\ \ or
+.TP
+.B life
+\fB[\-width \fIinteger\fP]
+[\-height \fIinteger\fP]
+[\-extra \fIinteger\fP]
+[\-wrap]
+[\-infile \fIstring\fP]
+[\-steps \fIinteger\fP]
+[\-inv]
+[\-mag \fIinteger\fP]
+[\-term \fIstring\fP]
+.PD 1
+.SH DESCRIPTION
+Simulate Conway's Game of Life with an arbitrary set of initial 
+conditions.  Input files need to be in the PBM file format.
+.SH OPTIONS
+.IP \fB\-width\ \fIinteger\fP
+Width of the plot in pixels.
+.IP \fB\-height\ \fIinteger\fP
+Height of the plot in pixels.
+.IP \fB\-extra\ \fIinteger\fP
+Number of extra border pixels.
+.IP \fB\-wrap
+Wrap around world?
+.IP \fB\-infile\ \fIstring\fP
+Initial configuration file
+.IP \fB\-steps\ \fIinteger\fP
+Number of time steps to simulate.
+.IP \fB\-inv
+Invert all colors?
+.IP \fB\-mag\ \fIinteger\fP
+Magnification factor.
+.IP \fB\-term\ \fIstring\fP
+How to plot points.
+.SH MISCELLANY
+You will need to use the -extra option in conjuction with
+the -wrap option if you wish to simulate moving objects that
+tend to fly off in one direction.  Periodic patterns may need
+the -extra option to give them a little bit of extra room to
+work in.
+.SH BUGS
+No sanity checks are performed to make sure that any of the
+options make sense.
+.SH CREDITS
+The data files for the initial states supplied with this
+program were lifted and converted from the excellent and free
+program xlife. 
+.SH AUTHOR
+Copyright (c) 1997, Gary William Flake.
+
+Permission granted for any use according to the standard GNU
+``copyleft'' agreement provided that the author's comments are
+neither modified nor removed.  No warranty is given or implied.

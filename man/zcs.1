@@ -1,0 +1,105 @@
+.TH ZCS 1
+.SH NAME
+.PD 0
+.TP
+zcs \- run a zeroth level classifier system on a terrain
+.PD 1
+.SH SYNOPSIS
+.PD 0
+.TP
+.B zcs \fB-help
+.LP
+\ \ or
+.TP
+.B zcs
+\fB[\-specs \fIstring\fP]
+[\-steps \fIinteger\fP]
+[\-seed \fIinteger\fP]
+[\-size \fIinteger\fP]
+[\-sinit \fIdouble\fP]
+[\-lrate \fIdouble\fP]
+[\-drate \fIdouble\fP]
+[\-trate \fIdouble\fP]
+[\-crate \fIdouble\fP]
+[\-mrate \fIdouble\fP]
+[\-grate \fIdouble\fP]
+[\-cover \fIdouble\fP]
+[\-wild \fIdouble\fP]
+[\-avelen \fIinteger\fP]
+[\-inv]
+[\-mag \fIinteger\fP]
+[\-term \fIstring\fP]
+.PD 1
+.SH DESCRIPTION
+Train a zeroth level classifier system (ZCS) to traverse a 
+two-dimensional terrain, avoid obstacles, and find food with the 
+implicit bucket brigade algorithm and a genetic algorithm.  At the 
+beginning of each step the ZCS is placed at a random location of it's 
+world.  It interacts with its environment until it finds food, which 
+yields a reward.  The simulation then restarts with the ZCS placed at 
+a new random location.  The progress of the ZCS is continuously 
+plotted, while the statistics on the time to find food are calculated 
+and displayed.  At the end of the simulation the classifiers that 
+make up the final ZCS are saved to a log file. 
+.SH OPTIONS
+.IP \fB\-specs\ \fIstring\fP
+World specification file.
+.IP \fB\-steps\ \fIinteger\fP
+Number of simulated trials.
+.IP \fB\-seed\ \fIinteger\fP
+Random seed for initial state.
+.IP \fB\-size\ \fIinteger\fP
+Population size.
+.IP \fB\-sinit\ \fIdouble\fP
+Initial classifier strength.
+.IP \fB\-lrate\ \fIdouble\fP
+BB learning rate.
+.IP \fB\-drate\ \fIdouble\fP
+BB discount rate.
+.IP \fB\-trate\ \fIdouble\fP
+Tax rate for strength reduce.
+.IP \fB\-crate\ \fIdouble\fP
+GA crossover rate.
+.IP \fB\-mrate\ \fIdouble\fP
+GA mutation rate.
+.IP \fB\-grate\ \fIdouble\fP
+GA invocation rate.
+.IP \fB\-cover\ \fIdouble\fP
+Covering factor.
+.IP \fB\-wild\ \fIdouble\fP
+Probability of # in cover.
+.IP \fB\-avelen\ \fIinteger\fP
+Length of windowed average.
+.IP \fB\-inv
+Invert all colors?
+.IP \fB\-mag\ \fIinteger\fP
+Magnification factor.
+.IP \fB\-term\ \fIstring\fP
+How to plot points.
+.SH MISCELLANY
+The file format for the specifications files must contain the
+width and height of the world followed by the details of the
+world in ASCII format, where '.' is an empty cell, 'O' is a rock,
+and 'F' represent food.  See any of the examples in the 'data'
+subdirectory of this distribution for more details.
+
+The log file, 'zcs.log', contains one line per classifier with
+the condition string, the action string, and the strength of the
+classifier.  The classifiers are sorted so the the strongest
+classifiers are printed first.
+
+The ASCII output of the program shows the most recent, windowed
+average and the total average for the number of steps needed to
+find food.
+.SH HINTS
+See the author's book, "The Computational Beauty of Nature," for
+more details.
+.SH BUGS
+No sanity checks are performed to make sure that any of the
+options make sense.
+.SH AUTHOR
+Copyright (c) 1997, Gary William Flake.
+
+Permission granted for any use according to the standard GNU
+``copyleft'' agreement provided that the author's comments are
+neither modified nor removed.  No warranty is given or implied.

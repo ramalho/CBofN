@@ -1,0 +1,81 @@
+.TH ASSOC 1
+.SH NAME
+.PD 0
+.TP
+assoc \- retrieve associative memories
+.PD 1
+.SH SYNOPSIS
+.PD 0
+.TP
+.B assoc \fB-help
+.LP
+\ \ or
+.TP
+.B assoc
+\fB[\-pfile \fI\.\.\.\fP]
+[\-tfile \fIstring\fP]
+[\-local \fIinteger\fP]
+[\-cut \fIdouble\fP]
+[\-pprob \fIdouble\fP]
+[\-noise \fIdouble\fP]
+[\-seed \fIinteger\fP]
+[\-steps \fIinteger\fP]
+[\-inv]
+[\-mag \fIinteger\fP]
+[\-term \fIstring\fP]
+.PD 1
+.SH DESCRIPTION
+Attempt to reconstruct a potentially corrupted image from a 
+McCulloch-Pitts feedback neural network that acts as an associative 
+memory.  The weights of the network are determined via Hebb's rule 
+after reading in multiple patterns.  Weights can be pruned either by 
+size, locality, or randomly. 
+.SH OPTIONS
+.IP \fB\-pfile\ \fI\.\.\.\fP
+File with pattern to store.
+.IP \fB\-tfile\ \fIstring\fP
+File with test pattern.
+.IP \fB\-local\ \fIinteger\fP
+locality of permitted weights
+.IP \fB\-cut\ \fIdouble\fP
+Cutoff size for weights.
+.IP \fB\-pprob\ \fIdouble\fP
+Probability of random pruning.
+.IP \fB\-noise\ \fIdouble\fP
+Amount of noise for test case.
+.IP \fB\-seed\ \fIinteger\fP
+Random seed for initial state.
+.IP \fB\-steps\ \fIinteger\fP
+Number of time steps.
+.IP \fB\-inv
+Invert all colors?
+.IP \fB\-mag\ \fIinteger\fP
+Magnification factor.
+.IP \fB\-term\ \fIstring\fP
+How to plot points.
+.SH MISCELLANY
+All pattern files must be in the PBM file format. You can request
+that multiple patterns be stored into the weights by using the
+-pfile option multiple time.
+
+The dimensions of the stored patterns and the test pattern must
+be identical.
+
+For weight pruning, the program first checks to see if a weight
+is "non-local" which means that for a weight that connects two
+neurons either the row indices or column indices differ by the
+amount greater than the value specified by the -local option.
+(If a value for local -local is zero, then all weights are used.)
+Next, the program prunes weights that are too small in size as
+specified by the -cut option.  If a weights has not been removed
+at this stage, then it will still be pruned with probability as
+specified by the -pprob option.
+.SH BUGS
+No sanity checks are performed to make sure that any of the
+options make sense.
+.SH AUTHOR
+Copyright (c) 1997, Gary William Flake.
+
+Permission granted for any use according to the standard GNU
+``copyleft'' agreement provided that the author's comments are
+neither modified nor removed.  No warranty is given or implied.

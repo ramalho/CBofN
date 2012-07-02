@@ -1,0 +1,106 @@
+.TH HP 1
+.SH NAME
+.PD 0
+.TP
+hp \- simulate the hodgepodge machine
+.PD 1
+.SH SYNOPSIS
+.PD 0
+.TP
+.B hp \fB-help
+.LP
+\ \ or
+.TP
+.B hp
+\fB[\-width \fIinteger\fP]
+[\-height \fIinteger\fP]
+[\-states \fIinteger\fP]
+[\-steps \fIinteger\fP]
+[\-seed \fIinteger\fP]
+[\-diag]
+[\-wrap]
+[\-g \fIdouble\fP]
+[\-k1 \fIdouble\fP]
+[\-k2 \fIdouble\fP]
+[\-freq \fIinteger\fP]
+[\-inv]
+[\-mag \fIinteger\fP]
+[\-term \fIstring\fP]
+.PD 1
+.SH DESCRIPTION
+The time evolution of the hodgepodge machine is simulated and plotted 
+according to the specified parameters.  The neighborhood of a cell can 
+optionally include or not include diagonal cells in a 3x3 area;  Moreover, 
+the neighborhood can also wrap around the edges so that the grid is 
+topologically toroidal.  With a proper choice of parameters, this system 
+resembles the Belousov-Zhabotinsky reaction which forms self-perpetuating 
+spirals in a lattice.  See the RULES section of the manual pages 
+or the source code for an explanation of how the cells change over time.
+.SH OPTIONS
+.IP \fB\-width\ \fIinteger\fP
+Width of the plot in pixels.
+.IP \fB\-height\ \fIinteger\fP
+Height of the plot in pixels.
+.IP \fB\-states\ \fIinteger\fP
+Number of cell states.
+.IP \fB\-steps\ \fIinteger\fP
+Number of simulated steps.
+.IP \fB\-seed\ \fIinteger\fP
+Random seed for initial state.
+.IP \fB\-diag
+Diagonal cells are neighbors?
+.IP \fB\-wrap
+Use a wrap-around space?
+.IP \fB\-g\ \fIdouble\fP
+Infection progression rate.
+.IP \fB\-k1\ \fIdouble\fP
+First weighting parameter.
+.IP \fB\-k2\ \fIdouble\fP
+Second weighting parameter.
+.IP \fB\-freq\ \fIinteger\fP
+Plot frequency.
+.IP \fB\-inv
+Invert all colors?
+.IP \fB\-mag\ \fIinteger\fP
+Magnification factor.
+.IP \fB\-term\ \fIstring\fP
+How to plot points.
+.SH RULES
+If each cell can be in one of N states (labelled 0 to n - 1),
+then cells in state 0 are ``healthy,'' cells in state n - 1
+are ``ill,'' and all other cells are ``infected.''
+
+Within a cell's neighborhood, let Nill, Ninf, and S, denote
+the number of ill cells, the number of infected cells, and the
+sum of the states of all neighbors plus this cell's state.
+The next state is determined by the three rules:
+
+   Healthy: floor( Ninf / k1 ) + floor( Nill / k2 )
+
+   Infected: floor( S / ( Ninf + 1 ) ) + g
+
+   Ill: magically becomes healthy, thus 0.
+
+Where k1, k2, and g are the parameters specified by the
+command line options.
+.SH MISCELLANY
+If you move from (to) an 8 cell neighborhood to (from) a 4 cell
+neighborhood try dividing (multiplying) k1 and k2 by 2 to
+produce a similar time evolution that occurred with the previous
+neighborhood size.
+
+For some reason, 4 cell neighborhoods seem to produce patterns
+with more spirals.
+
+This simulation can be frustratingly slow at times, so you
+may wish to use the -freq option to cut down on the overhead
+of plotting the states.
+.SH BUGS
+No sanity checks are performed to make sure that any of the
+options make sense.
+.SH AUTHOR
+Copyright (c) 1997, Gary William Flake.
+
+Permission granted for any use according to the standard GNU
+``copyleft'' agreement provided that the author's comments are
+neither modified nor removed.  No warranty is given or implied.

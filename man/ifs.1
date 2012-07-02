@@ -1,0 +1,68 @@
+.TH IFS 1
+.SH NAME
+.PD 0
+.TP
+ifs \- generate fractals with an IFS
+.PD 1
+.SH SYNOPSIS
+.PD 0
+.TP
+.B ifs \fB-help
+.LP
+\ \ or
+.TP
+.B ifs
+\fB[\-infile \fIstring\fP]
+[\-width \fIinteger\fP]
+[\-height \fIinteger\fP]
+[\-border \fIinteger\fP]
+[\-its \fIinteger\fP]
+[\-skip \fIinteger\fP]
+[\-term \fIstring\fP]
+[\-inv]
+[\-mag \fIinteger\fP]
+.PD 1
+.SH DESCRIPTION
+An affine fractal is computed via an Iterated Functional System. 
+The rules must be supplied from a file with each line 
+consisting of six values (A-F) such that the values of A-D describe 
+a 2x2 matrix (A, B; C, D), while E and F describes a 2x1 column vector 
+(E; F).
+.SH OPTIONS
+.IP \fB\-infile\ \fIstring\fP
+Data input file.
+.IP \fB\-width\ \fIinteger\fP
+Width of the plot in pixels.
+.IP \fB\-height\ \fIinteger\fP
+Height of the plot in pixels.
+.IP \fB\-border\ \fIinteger\fP
+Number of pixels in border.
+.IP \fB\-its\ \fIinteger\fP
+Number of iterations.
+.IP \fB\-skip\ \fIinteger\fP
+Number of iteration to skip.
+.IP \fB\-term\ \fIstring\fP
+How to plot points.
+.IP \fB\-inv
+Invert colors?
+.IP \fB\-mag\ \fIinteger\fP
+Magnification factor.
+.SH MISCELLANY
+There is a shell script called 'ifscma' supplied with the source
+code that has a simple interface that allows you to reference
+sets of predefined rules by name.  You may also wish to see the
+author's book, "The Computational Beauty of Nature," for
+some more examples.
+.SH BUGS
+No sanity checks are performed to make sure that any of the
+options make sense.
+
+The maximum number of affine rules is determined by the
+constant MAXRULES, which you may need to adjust under exceptional
+circumstances.
+.SH AUTHOR
+Copyright (c) 1997, Gary William Flake.
+
+Permission granted for any use according to the standard GNU
+``copyleft'' agreement provided that the author's comments are
+neither modified nor removed.  No warranty is given or implied.
